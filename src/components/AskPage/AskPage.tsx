@@ -80,7 +80,7 @@ const AskPage = () => {
             setCur(cur+1)
     }
 
-
+    console.log(31)
     return (
         <GradientBackground gradient={`url('${ask}')`}>
             <GazpromName/>
