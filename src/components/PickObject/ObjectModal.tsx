@@ -1,6 +1,7 @@
 import { FC } from "react"
 import styled from "styled-components"
 import Cross from "../UI/Cross/Cross"
+import GreenButton from "../UI/GreenButton/GreenButton"
 
 const ModalPhone = styled.div`
     position: absolute;
@@ -60,6 +61,13 @@ const CrossWrapper = styled.div`
     top: 2%;
 `
 
+const ButtonWrapper = styled.div`
+    position: absolute;
+    right: 5%;
+    bottom: -25px;
+`
+
+
 interface IObjectModal {
     close: () => void
     data: {
@@ -80,6 +88,9 @@ const ObjectModal: FC<IObjectModal> = ({close, data}) => {
                         <CrossWrapper><Cross func={close}/></CrossWrapper>
                         <ModalName>{data.name}</ModalName>
                         <ModalDesk>{data.desk}</ModalDesk>
+                        <ButtonWrapper>
+                            <GreenButton func={() => {}}>Перейти</GreenButton>
+                        </ButtonWrapper>
                     </Modal>
             </ModalWrapper>
     </ModalPhone>

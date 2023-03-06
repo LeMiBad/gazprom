@@ -9,6 +9,7 @@ import ObjectModal from "./ObjectModal"
 
 
 const ObjectsWrapper = styled.div`
+    overflow: hidden;
     width: 100%; 
     display: flex; 
     height: 70%; 
@@ -19,15 +20,15 @@ const ObjectsWrapper = styled.div`
 
 const ObjectCard = styled.div`
     width: 25%;
-    @media (max-width: 768px) {
-        font-size: 14px;
-    }
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     position: relative;
 
     h1 {
+        @media (max-width: 768px) {
+            font-size: 20px;
+        }
         display: flex;
         justify-content: center;
         align-items: center;

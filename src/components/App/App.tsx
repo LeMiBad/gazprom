@@ -1,4 +1,5 @@
 import { useStore } from "effector-react"
+import { useEffect, useState } from "react"
 import { createGlobalStyle } from "styled-components"
 import { $curPage } from "../../store/page"
 import AskPage from "../AskPage/AskPage"
@@ -32,12 +33,18 @@ const GlobalStyles = createGlobalStyle`
 export const App = () => {
     const curPage = useStore($curPage)
     const Pages = [<StartPage/>, <AskPage/>, <PickObject/>, <Map/>]
+    const [isVertical, setIsVertical] = useState(window.innerHeight > window.innerWidth)
 
+    useEffect(() => {
+        window.onresize = () => {
+            setIsVertical(window.innerHeight > window.innerWidth)
+        }
+    }, [])
 
     return (
         <>
             <GlobalStyles/>
-            {window.innerHeight > window.innerWidth? <BadResolutionPage></BadResolutionPage> 
+            {isVertical? <BadResolutionPage></BadResolutionPage> 
             : 
             Pages[curPage]}
         </>
