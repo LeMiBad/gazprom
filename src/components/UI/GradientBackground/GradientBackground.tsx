@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 interface GradientBackgroundProps {
-    children: any
+    children?: any
     gradient: string
 }
 

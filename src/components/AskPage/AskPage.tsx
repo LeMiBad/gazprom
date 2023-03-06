@@ -1,12 +1,14 @@
 import { useState } from "react"
 import styled from "styled-components"
-import GazpromName from "../UI/GradientBackground/GazpromName"
+import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import GreenButton from "../UI/GreenButton/GreenButton"
-import ask from './../../img/ask.png'
+import ask from './ask.png'
 import zeter from './../../img/zeter.png'
 import shest from './../../img/shest.png'
 import polukrug from './../../img/polukrug.png'
+import { setCurPage } from "../../store/page"
+import { setAskAnswers } from "../../store/askAnswers"
 
 
 
@@ -49,6 +51,19 @@ const Answer = styled.p<{picked: boolean}>`
     ${props => props.picked? 'background: linear-gradient(90deg, #1570B8 0%, rgba(21, 184, 173, 0.31) 100%);' : ''}
 `
 
+const AskText = styled.p`
+    font-weight: 700;
+    position: absolute; 
+    left: 8%; 
+    top: 30vh;
+    width: 37%; 
+    color: white; 
+    font-size: 18px;
+    @media (max-height: 320px) {
+        font-size: 14px;
+    }
+`
+
 const current = [
     {
         ask: 'Перед тобой выбор: уехать на пару дней в новые края. Что ты предпочтешь?',
@@ -67,20 +82,36 @@ const current = [
     },
 ]
 
+
 const AskPage = () => {
     const [pickAnswer, setPickAnswer] = useState(-1)
+    const [answers, setAnswers] = useState([-1, -1, -1])
     const [cur, setCur] = useState(0)
 
     const pickHandler = (index: number) => {
         if(index === pickAnswer) setPickAnswer(-1)
-        else setPickAnswer(index)
+        else {
+            setPickAnswer(index)
+            setAnswers(() => {
+                const result = [...answers]
+                result[cur] = index
+                return result
+            })
+        }
     }
-
+    
     const buttonHandler = () => {
+        if(cur === 2) {
+            setAskAnswers(answers)
+            setCurPage(2)
+            return
+        }
+        else {
+            setPickAnswer(-1)
             setCur(cur+1)
+        }
     }
 
-    console.log(31)
     return (
         <GradientBackground gradient={`url('${ask}')`}>
             <GazpromName/>
@@ -99,7 +130,7 @@ const AskPage = () => {
                     : 
                     null
                 }
-                <p style={{fontWeight: 700, position: 'absolute', left: '8%', top: '45vh', width: '30%', color: 'white', fontSize: 26}}>{current[cur].ask}</p>
+                <AskText>{current[cur].ask}</AskText>
                 <img style={{position: 'absolute', left: 0, bottom: 0, width: '45%', zIndex: -1}} alt="" src={current[cur].img} />
             </Wrapper>
         </GradientBackground>

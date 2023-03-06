@@ -28,7 +28,7 @@ const Name = styled.div`
         background-color: white;
     }
     h1 {
-        font-size: 40px;
+        font-size: 20px;
         left: 6%;
         padding: 0 15px;
     }
@@ -43,7 +43,10 @@ const Name = styled.div`
 const MainText = styled.p`
     box-sizing: border-box;
     color: white;
-    font-size: 28px;
+    font-size: 16px;
+    @media (max-height: 320px) {
+        font-size: 12px !important;
+    }
     font-weight: 700;
     padding: 0 calc(5% + 15px);
     width: 55%;
@@ -55,10 +58,16 @@ const Footer = styled.div`
     color:  white;
     display: flex;
     justify-content: space-between;
-
-    p{
+    align-items: flex-end;
+    p {
+        font-size: 16px;
         width: 55%;
         font-weight: 600;
+    }
+    @media (max-height: 320px) {
+        p {
+            font-size: 12px;
+        }
     }
 `
 

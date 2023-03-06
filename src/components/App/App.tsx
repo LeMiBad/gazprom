@@ -2,6 +2,9 @@ import { useStore } from "effector-react"
 import { createGlobalStyle } from "styled-components"
 import { $curPage } from "../../store/page"
 import AskPage from "../AskPage/AskPage"
+import BadResolutionPage from "../BadResolutionPage/BadResolutionPage"
+import Map from "../Map/Map"
+import PickObject from "../PickObject/PickObject"
 import StartPage from "../StartPage/StartPage"
 
 
@@ -13,13 +16,13 @@ const GlobalStyles = createGlobalStyle`
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
         user-select: none;
-        @media (max-width: 768px) {
+        @media (min-width: 1024px) {
             h1 {
-                font-size: 20px !important;
+                font-size: 32px !important;
             }
             
             p {
-                font-size: 16px !important;
+                font-size: 20px !important;
             }
         }
     }
@@ -28,13 +31,15 @@ const GlobalStyles = createGlobalStyle`
 
 export const App = () => {
     const curPage = useStore($curPage)
-    const Pages = [<StartPage/>, <AskPage/>]
+    const Pages = [<StartPage/>, <AskPage/>, <PickObject/>, <Map/>]
 
-    
+
     return (
         <>
             <GlobalStyles/>
-            {Pages[curPage]}
+            {window.innerHeight > window.innerWidth? <BadResolutionPage></BadResolutionPage> 
+            : 
+            Pages[curPage]}
         </>
     )
 }

@@ -14,6 +14,7 @@ const Button = styled.button`
     box-sizing: border-box;
     padding: 1vh 3vw;
     cursor: pointer;
+    height: 50px;
     :hover {
         background: linear-gradient(270deg, #1b82d6 -78.05%, #18dacd 110.36%);
     }
