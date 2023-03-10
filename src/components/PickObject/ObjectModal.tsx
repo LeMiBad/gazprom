@@ -1,5 +1,6 @@
 import { FC } from "react"
 import styled from "styled-components"
+import { setCurPage } from "../../store/page"
 import Cross from "../UI/Cross/Cross"
 import GreenButton from "../UI/GreenButton/GreenButton"
 
@@ -89,7 +90,7 @@ const ObjectModal: FC<IObjectModal> = ({close, data}) => {
                         <ModalName>{data.name}</ModalName>
                         <ModalDesk>{data.desk}</ModalDesk>
                         <ButtonWrapper>
-                            <GreenButton func={() => {}}>Перейти</GreenButton>
+                            <GreenButton func={() => {setCurPage(4)}}>Перейти</GreenButton>
                         </ButtonWrapper>
                     </Modal>
             </ModalWrapper>

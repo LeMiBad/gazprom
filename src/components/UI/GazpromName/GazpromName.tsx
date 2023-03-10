@@ -60,6 +60,11 @@ const GazpromName: React.FC<GazpromNameProps> = ({textOne, textTwo}) => {
                     {textOne? <TextTwo>{textTwo}</TextTwo> : null}
                 </div>
                 :
+                textOne?
+                <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                    <TextOne>{textOne}</TextOne>
+                </div>
+                :
                 null
             }
         </Wrapper>

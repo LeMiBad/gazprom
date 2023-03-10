@@ -4,9 +4,12 @@ import { createGlobalStyle } from "styled-components"
 import { $curPage } from "../../store/page"
 import AskPage from "../AskPage/AskPage"
 import BadResolutionPage from "../BadResolutionPage/BadResolutionPage"
+import ObjectPage from "../Objects/ObjectPage/ObjectPage"
 import Map from "../Map/Map"
 import PickObject from "../PickObject/PickObject"
 import StartPage from "../StartPage/StartPage"
+import PolzunokPage from "../PolzunokPage/PolzunokPage"
+import PuzlePage from "../PuzlePage/PuzlePage"
 
 
 const GlobalStyles = createGlobalStyle`
@@ -32,7 +35,7 @@ const GlobalStyles = createGlobalStyle`
 
 export const App = () => {
     const curPage = useStore($curPage)
-    const Pages = [<StartPage/>, <AskPage/>, <PickObject/>, <Map/>]
+    const Pages = [<StartPage/>, <AskPage/>, <PickObject/>, <Map/>, <ObjectPage/>]
     const [isVertical, setIsVertical] = useState(window.innerHeight > window.innerWidth)
 
     useEffect(() => {
@@ -46,7 +49,8 @@ export const App = () => {
             <GlobalStyles/>
             {isVertical? <BadResolutionPage></BadResolutionPage> 
             : 
-            Pages[curPage]}
+            // Pages[curPage]}
+            <PuzlePage/>}
         </>
     )
 }
