@@ -98,46 +98,46 @@ const PuzlePage = () => {
         [
             [
                 {
-                    img: sqr3,
-                    left: 0,
-                    top: 0
-                },
-                {
-                    img: sqr5,
-                    left: 33,
-                    top: 0
-                },
-                {
                     img: sqr1,
-                    left: 66,
-                    top: 0
-                },
-            ],
-            [
-                {
-                    img: sqr8,
                     left: 0,
-                    top: 33
+                    top: 0
                 },
                 {
                     img: sqr2,
                     left: 33,
-                    top: 33
+                    top: 0
                 },
                 {
-                    img: sqr7,
+                    img: sqr3,
                     left: 66,
-                    top: 33
+                    top: 0
                 },
             ],
             [
                 {
                     img: sqr4,
                     left: 0,
-                    top: 66
+                    top: 33
+                },
+                {
+                    img: sqr5,
+                    left: 33,
+                    top: 33
                 },
                 {
                     img: sqr6,
+                    left: 66,
+                    top: 33
+                },
+            ],
+            [
+                {
+                    img: sqr7,
+                    left: 0,
+                    top: 66
+                },
+                {
+                    img: sqr8,
                     left: 33,
                     top: 66
                 },
