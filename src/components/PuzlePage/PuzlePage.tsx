@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
+import { setCurPage } from "../../store/page"
 import GameRule from "../GameRule/GameRule"
 import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
+import GreenButton from "../UI/GreenButton/GreenButton"
 import back from './back.png'
 import sqr1 from './sqr1.png'
 import sqr2 from './sqr2.png'
@@ -50,17 +52,15 @@ const setterPosition = (arr: Array<Array<{ left: number, top: number, img: strin
 
     arr.forEach((col, colI) => {
         col.forEach((item, i) => {
-            if(item) {
-                result[colI][i] = {...item, top: colI * 33, left: i * 33}
+            if (item) {
+                result[colI][i] = { ...item, top: colI * 33, left: i * 33 }
             }
         })
     })
 
-    
+
     return result
 }
-
-
 
 
 const Wrapper = styled.div`
@@ -86,107 +86,58 @@ const ImgAbs = styled.img<{ top?: number, left?: number }>`
     width: 33%;
     height: 33%;
     position: absolute;
-    transition: 0.3s;
     ${props => props.left ? `left: ${props.left}%;` : ''};
     ${props => props.top ? `top: ${props.top}%;` : ''};
 `
 
-
-const NedeedArr = [
-    [
-        {
-            img: sqr3,
-            left: 0,
-            top: 0
-        },
-        {
-            img: sqr5,
-            left: 33,
-            top: 0
-        },
-        {
-            img: sqr1,
-            left: 66,
-            top: 0
-        },
-    ],
-    [
-        {
-            img: sqr8,
-            left: 0,
-            top: 33
-        },
-        {
-            img: sqr2,
-            left: 33,
-            top: 33
-        },
-        {
-            img: sqr7,
-            left: 66,
-            top: 33
-        },
-    ],
-    [
-        {
-            img: sqr4,
-            left: 0,
-            top: 66
-        },
-        {
-            img: sqr6,
-            left: 33,
-            top: 66
-        },
-        null
-    ],
-]
+const needed = [sqr3, sqr5, sqr1, sqr8, sqr2, sqr7, sqr4, sqr6, null]
 
 const PuzlePage = () => {
+    const [isWin, setIsWin] = useState(false)
     const [area, setArea] = useState(
         [
             [
                 {
-                    img: sqr1,
+                    img: sqr3,
                     left: 0,
                     top: 0
                 },
                 {
-                    img: sqr2,
+                    img: sqr5,
                     left: 33,
                     top: 0
                 },
                 {
-                    img: sqr3,
+                    img: sqr1,
                     left: 66,
                     top: 0
+                },
+            ],
+            [
+                {
+                    img: sqr8,
+                    left: 0,
+                    top: 33
+                },
+                {
+                    img: sqr2,
+                    left: 33,
+                    top: 33
+                },
+                {
+                    img: sqr7,
+                    left: 66,
+                    top: 33
                 },
             ],
             [
                 {
                     img: sqr4,
                     left: 0,
-                    top: 33
-                },
-                {
-                    img: sqr5,
-                    left: 33,
-                    top: 33
-                },
-                {
-                    img: sqr6,
-                    left: 66,
-                    top: 33
-                },
-            ],
-            [
-                {
-                    img: sqr7,
-                    left: 0,
                     top: 66
                 },
                 {
-                    img: sqr8,
+                    img: sqr6,
                     left: 33,
                     top: 66
                 },
@@ -196,6 +147,9 @@ const PuzlePage = () => {
     )
 
 
+    useEffect(() => {
+        setIsWin(needed.map(item => item? item : 'null').join('') === area.flat(1).map(item => item? item.img : 'null').join(''))
+    }, [area, isWin])
 
     const handler = (col: number, i: number) => {
         setArea(setterPosition(swapIfNeeded(col, i, area)))
@@ -216,6 +170,16 @@ const PuzlePage = () => {
                     }))}
                 </GameWrapper>
             </Wrapper>
+            {
+                isWin?
+                <div style={{position: 'absolute', bottom: '5%', right: '5%'}}>
+                    <GreenButton func={() => {setCurPage(3)}}>Красота!</GreenButton>
+                </div>
+                :
+                <div style={{position: 'absolute', bottom: '5%', right: '5%'}}>
+                    <GreenButton inActive func={() => {}}>Красота!</GreenButton>
+                </div>
+            }
         </GradientBackground>
     )
 }

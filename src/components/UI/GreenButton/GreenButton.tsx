@@ -4,6 +4,7 @@ import styled from "styled-components"
 interface ButtonProps {
     func: () => void
     children: string
+    inActive?: boolean
 }
 
 const Button = styled.button`
@@ -20,7 +21,20 @@ const Button = styled.button`
     }
 `
 
-export const GreenButton: React.FC<ButtonProps> = ({func, children}) => {
+const GreyButton = styled.button`
+    border: 0;
+    background: #BEE4FA4D;
+    backdrop-filter: blur(5px);
+    color: white;
+    font-weight: 600;
+    box-sizing: border-box;
+    padding: 1vh 3vw;
+    cursor: pointer;
+    height: 50px;
+`
+
+export const GreenButton: React.FC<ButtonProps> = ({func, children, inActive}) => {
+    if(inActive) return <GreyButton onClick={func}>{children}</GreyButton>
     return <Button onClick={func}>{children}</Button>
 }
 

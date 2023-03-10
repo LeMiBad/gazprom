@@ -20,6 +20,7 @@ const GlobalStyles = createGlobalStyle`
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
         user-select: none;
+        overflow: hidden;
         @media (min-width: 1024px) {
             h1 {
                 font-size: 32px !important;

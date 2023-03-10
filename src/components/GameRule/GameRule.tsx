@@ -41,8 +41,8 @@ const ModalWrapper = styled.div`
 
 const Modal = styled.div`
     position: relative;
-    width: 70%;
-    height: 75%;
+    width: 55%;
+    height: 60%;
     background: linear-gradient(357.3deg, #1570B8 15.18%, rgba(255, 255, 255, 0) 60%);
 `
 
@@ -68,13 +68,6 @@ const ModalDesk = styled.h1`
     font-size: 14px;
     color: white;
     width: 80%;
-`
-
-
-const CrossWrapper = styled.div`
-    position: absolute;
-    right: 1%;
-    top: 2%;
 `
 
 const ButtonWrapper = styled.div`
