@@ -14,6 +14,13 @@ import sqr5 from './sqr5.png'
 import sqr6 from './sqr6.png'
 import sqr7 from './sqr7.png'
 import sqr8 from './sqr8.png'
+import sqr9 from './sqr9.png'
+import sqr10 from './sqr10.png'
+import sqr11 from './sqr11.png'
+import sqr12 from './sqr12.png'
+import sqr13 from './sqr13.png'
+import sqr14 from './sqr14.png'
+import sqr15 from './sqr15.png'
 
 
 function swapIfNeeded(col: number, i: number, area: Array<Array<{ left: number, top: number, img: string } | null>>): Array<Array<{ left: number, top: number, img: string } | null>> {
@@ -53,7 +60,7 @@ const setterPosition = (arr: Array<Array<{ left: number, top: number, img: strin
     arr.forEach((col, colI) => {
         col.forEach((item, i) => {
             if (item) {
-                result[colI][i] = { ...item, top: colI * 33, left: i * 33 }
+                result[colI][i] = { ...item, top: colI * 25, left: i * 25 }
             }
         })
     })
@@ -83,8 +90,8 @@ const GameWrapper = styled.div`
 
 
 const ImgAbs = styled.img<{ top?: number, left?: number }>`
-    width: 33%;
-    height: 33%;
+    width: 25%;
+    height: 25%;
     position: absolute;
     ${props => props.left ? `left: ${props.left}%;` : ''};
     ${props => props.top ? `top: ${props.top}%;` : ''};
@@ -104,42 +111,79 @@ const PuzlePage = () => {
                 },
                 {
                     img: sqr2,
-                    left: 33,
+                    left: 25,
                     top: 0
                 },
                 {
                     img: sqr3,
-                    left: 66,
+                    left: 50,
+                    top: 0
+                },
+                {
+                    img: sqr4,
+                    left: 75,
                     top: 0
                 },
             ],
             [
                 {
-                    img: sqr4,
-                    left: 0,
-                    top: 33
-                },
-                {
                     img: sqr5,
-                    left: 33,
-                    top: 33
+                    left: 0,
+                    top: 25
                 },
                 {
                     img: sqr6,
-                    left: 66,
-                    top: 33
+                    left: 25,
+                    top: 25
+                },
+                {
+                    img: sqr7,
+                    left: 50,
+                    top: 25
+                },
+                {
+                    img: sqr8,
+                    left: 75,
+                    top: 25
                 },
             ],
             [
                 {
-                    img: sqr7,
+                    img: sqr9,
                     left: 0,
-                    top: 66
+                    top: 50
                 },
                 {
-                    img: sqr8,
-                    left: 33,
-                    top: 66
+                    img: sqr10,
+                    left: 25,
+                    top: 50
+                },
+                {
+                    img: sqr11,
+                    left: 50,
+                    top: 50
+                },
+                {
+                    img: sqr12,
+                    left: 75,
+                    top: 50
+                },
+            ],
+            [
+                {
+                    img: sqr13,
+                    left: 0,
+                    top: 75
+                },
+                {
+                    img: sqr14,
+                    left: 25,
+                    top: 75
+                },
+                {
+                    img: sqr15,
+                    left: 50,
+                    top: 75
                 },
                 null
             ],
