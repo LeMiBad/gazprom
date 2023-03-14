@@ -158,6 +158,7 @@ interface IObj {
 const objects = {
     z: {
         name: 'Заполярное НГКМ',
+        index: 'z',
         image: z,
         smallImage: zSmall,
         backImage: zBack,
@@ -171,6 +172,7 @@ const objects = {
     },
     u: {
         name: 'Уренгойское НГКМ',
+        index: 'u',
         image: u,
         smallImage: uSmall,
         backImage: uBack,
@@ -187,6 +189,7 @@ const objects = {
     },
     b: {
         name: 'Бованенковское НГКМ',
+        index: 'b',
         image: b,
         smallImage: bSmall,
         backImage: bBack,
@@ -200,6 +203,7 @@ const objects = {
     },
     ch: {
         name: 'Чаяндинское НГКМ',
+        index: 'ch',
         image: ch,
         smallImage: chSmall,
         backImage: chBack,
@@ -216,6 +220,7 @@ const objects = {
     },
     h: {
         name: 'Харасавэйское ГКМ',
+        index: 'h',
         image: h,
         smallImage: hSmall,
         backImage: hBack,
@@ -232,6 +237,7 @@ const objects = {
     },
     k: {
         name: 'Ковыктинское ГКМ',
+        index: 'k',
         image: k,
         smallImage: kSmall,
         backImage: kBack,
@@ -245,6 +251,7 @@ const objects = {
     },
     o: {
         name: 'Омский НПЗ',
+        index: 'o',
         image: o,
         smallImage: oSmall,
         backImage: oBack,

@@ -1,5 +1,6 @@
 import { FC } from "react"
 import styled from "styled-components"
+import { pickObject } from "../../store/askAnswers"
 import { setCurPage } from "../../store/page"
 import Cross from "../UI/Cross/Cross"
 import GreenButton from "../UI/GreenButton/GreenButton"
@@ -82,6 +83,11 @@ interface IObjectModal {
 
 
 const ObjectModal: FC<IObjectModal> = ({close, data}) => {
+    const pickHandler = () => {
+        setCurPage(4)
+    }
+
+
     return <ModalPhone>
                 <ModalWrapper>
                     <Modal>
@@ -90,7 +96,7 @@ const ObjectModal: FC<IObjectModal> = ({close, data}) => {
                         <ModalName>{data.name}</ModalName>
                         <ModalDesk>{data.desk}</ModalDesk>
                         <ButtonWrapper>
-                            <GreenButton func={() => {setCurPage(4)}}>Перейти</GreenButton>
+                            <GreenButton func={pickHandler}>Перейти</GreenButton>
                         </ButtonWrapper>
                     </Modal>
             </ModalWrapper>

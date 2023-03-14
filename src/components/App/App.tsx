@@ -10,6 +10,7 @@ import PickObject from "../PickObject/PickObject"
 import StartPage from "../StartPage/StartPage"
 import PolzunokPage from "../PolzunokPage/PolzunokPage"
 import PuzlePage from "../PuzlePage/PuzlePage"
+import TrubaPage from "../TrubaPage/TrubaPage"
 
 
 const GlobalStyles = createGlobalStyle`
@@ -36,8 +37,9 @@ const GlobalStyles = createGlobalStyle`
 
 export const App = () => {
     const curPage = useStore($curPage)
-    const Pages = [<StartPage/>, <AskPage/>, <PickObject/>, <Map/>, <ObjectPage/>]
+    const Pages = [<StartPage/>, <AskPage/>, <PickObject/>, <Map/>, <ObjectPage/>, <PolzunokPage/>, <PuzlePage/>, <TrubaPage/>]
     const [isVertical, setIsVertical] = useState(window.innerHeight > window.innerWidth)
+
 
     useEffect(() => {
         window.onresize = () => {
@@ -50,8 +52,7 @@ export const App = () => {
             <GlobalStyles/>
             {isVertical? <BadResolutionPage></BadResolutionPage> 
             : 
-            // Pages[curPage]}
-            <PuzlePage/>}
+            Pages[curPage]}
         </>
     )
 }

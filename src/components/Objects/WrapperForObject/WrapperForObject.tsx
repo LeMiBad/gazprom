@@ -1,5 +1,8 @@
+import { useStore } from "effector-react"
 import { FC } from "react"
 import styled from "styled-components"
+import { $pickedObject } from "../../../store/askAnswers"
+import { setCurPage } from "../../../store/page"
 import GreenButton from "../../UI/GreenButton/GreenButton"
 
 interface IWrapperForObject {
@@ -36,13 +39,24 @@ const WrapperForText = styled.div`
 
 
 const WrapperForObject: FC<IWrapperForObject> = ({textOne, textTwo}) => {
+    const pickedObject = useStore($pickedObject)
+
+    console.log(pickedObject.index)
+
+    const buttonHandler = () => {
+        if(pickedObject.index === 'h') setCurPage(5)
+        else if(pickedObject.index === 'o') setCurPage(6)
+        else if(pickedObject.index === 'ch') setCurPage(7)
+    }
+
+
     return (
         <StyledWrapperForObject>
             <WrapperForText>
                 <p>{textOne}</p>
                 <p>{textTwo}</p>
             </WrapperForText>
-            <GreenButton func={() => {}}>Старт</GreenButton>
+            <GreenButton func={buttonHandler}>Старт</GreenButton>
         </StyledWrapperForObject>
     )
 }

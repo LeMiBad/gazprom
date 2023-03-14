@@ -1,7 +1,7 @@
 import { useStore } from "effector-react"
 import { useState } from "react"
 import styled from "styled-components"
-import { $askAnswers } from "../../store/askAnswers"
+import { $askAnswers, pickObject } from "../../store/askAnswers"
 import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import background from './img/background.png'
@@ -61,6 +61,7 @@ const PickObject = () => {
         if(typeof i === 'number') setCurAnswer(answers[i])
         if(isVisible === true) setIsVisible(false)
         else setIsVisible(true)
+        if(typeof i === 'number') pickObject(answers[i].index)
     }
 
 
