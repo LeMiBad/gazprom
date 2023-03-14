@@ -41,7 +41,6 @@ const WrapperForText = styled.div`
 const WrapperForObject: FC<IWrapperForObject> = ({textOne, textTwo}) => {
     const pickedObject = useStore($pickedObject)
 
-    console.log(pickedObject.index)
 
     const buttonHandler = () => {
         if(pickedObject.index === 'h') setCurPage(5)

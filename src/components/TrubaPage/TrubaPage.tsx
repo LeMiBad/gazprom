@@ -82,7 +82,7 @@ const TrubaPage = () => {
     const [area, setArea] = useState(
         [
             {
-                img: sqr1,
+                img: isWin? sqrwin1 : sqr1,
                 left: 0,
                 top: 0,
                 rotate: 90
@@ -207,59 +207,79 @@ const TrubaPage = () => {
 
 
     const rotateHandler = (i: number) => {
+        if(isWin) return
+
         const newArr = [...area]
 
         if(newArr[i].rotate === 360) newArr[i].rotate = 0
         else newArr[i].rotate += 90
 
-        let isWin = true
+        let isNowWin = true
 
-        if(newArr[0].rotate !== 0) {
-            isWin = false
+        if(![180, 360, 0].includes(newArr[0].rotate)) {
+            isNowWin = false
         }
         if(![180, 360, 0].includes(newArr[1].rotate)) {
-            isWin = false
+            isNowWin = false
         }
         if(newArr[2].rotate !== 360) {
-            isWin = false
+            isNowWin = false
         }
-        if(![360, 270].includes(newArr[3].rotate)) {
-            isWin = false
+        if(![360, 270, 0].includes(newArr[3].rotate)) {
+            isNowWin = false
         }
         if(![360, 180].includes(newArr[4].rotate)) {
-            isWin = false
+            isNowWin = false
         }
-        if(![360, 270].includes(newArr[5].rotate)) {
-            isWin = false
+        if(![360, 270, 0].includes(newArr[5].rotate)) {
+            isNowWin = false
         }
         if(newArr[6].rotate !== 360) {
-            isWin = false
+            isNowWin = false
         }
         if(![0, 180, 360].includes(newArr[7].rotate)) {
-            isWin = false
+            isNowWin = false
         }
         if(![0, 180, 360].includes(newArr[8].rotate)) {
-            isWin = false
+            isNowWin = false
         }
         if(![0, 180, 360].includes(newArr[11].rotate)) {
-            isWin = false
+            isNowWin = false
         }
-        if(![360, 0].includes(newArr[16].rotate)) {
-            isWin = false
+        if(![360, 0].includes(newArr[12].rotate)) {
+            isNowWin = false
         }
         if(![360, 0].includes(newArr[13].rotate)) {
-            isWin = false
+            isNowWin = false
         }
         if(![0, 180, 360].includes(newArr[15].rotate)) {
-            isWin = false
+            isNowWin = false
         }
         if(![360, 0].includes(newArr[16].rotate)) {
-            isWin = false
+            isNowWin = false
         }
 
-        setIsWin(isWin)
+        if(isNowWin) {
+            setIsWin(isNowWin)
+            newArr[0].img = sqrwin1
+            newArr[1].img = sqrwin2
+            newArr[2].img = sqrwin3
+            newArr[3].img = sqrwin4
+            newArr[4].img = sqrwin5
+            newArr[5].img = sqrwin6
+            newArr[6].img = sqrwin7
+            newArr[7].img = sqrwin8
+            newArr[8].img = sqrwin9
+            newArr[11].img = sqrwin12
+            newArr[12].img = sqrwin13
+            newArr[13].img = sqrwin14
+            newArr[15].img = sqrwin16
+            newArr[16].img = sqrwin17
+        }
+        else {
+            setArea(newArr)
+        }
 
-        setArea(newArr)
     }
 
 
