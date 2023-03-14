@@ -271,14 +271,23 @@ const objects = {
 
 const company: any = {
     '000': [objects.k, objects.ch, objects.h],
-    '010': [objects.k, objects.ch, objects.b],
-    '020': [objects.k, objects.ch],
-    '001': [objects.k, objects.ch],
-    '011': [objects.z, objects.u, objects.o],
-    '021': [objects.z, objects.u, objects.o],
-    '111': [objects.h, objects.b],
-    '220': [objects.o, objects.h, objects.ch],
-    '221': [objects.o, objects.z, objects.u]
+    '010': [objects.k, objects.b],
+    '020': [objects.k, objects.z, objects.o],
+    '001': [objects.ch, objects.k],
+    '011': [objects.ch, objects.b],
+    '021': [objects.ch, objects.u],
+    '100': [objects.h, objects.z, objects.k],
+    '101': [objects.b, objects.u, objects.ch],
+    '110': [objects.h, objects.b, objects.z],
+    '111': [objects.b, objects.u],
+    '120': [objects.z, objects.u, objects.o],
+    '121': [objects.u, objects.b, objects.z],
+    '200': [objects.h, objects.o, objects.k],
+    '201': [objects.h, objects.ch],
+    '210': [objects.h, objects.o],
+    '211': [objects.b, objects.o],
+    '220': [objects.h, objects.o, objects.z],
+    '221': [objects.o, objects.u],
 }
 
 
