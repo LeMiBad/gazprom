@@ -84,6 +84,7 @@ interface IObjectModal {
 
 const ObjectModal: FC<IObjectModal> = ({close, data}) => {
     const pickHandler = () => {
+        
         setCurPage(4)
     }
 

@@ -300,12 +300,35 @@ export const $askAnswers = createStore<any>(null)
 
 export const pickObject = createEvent<string>()
 export const $pickedObject = createStore<any>(objects.o)
-    .on(pickObject, (_, objectName) => {
-        if(objectName === 'z') return objects.z
-        else if(objectName === 'u') return objects.u
-        else if(objectName === 'b') return objects.b
-        else if(objectName === 'ch') return objects.ch
-        else if(objectName === 'h') return objects.h
-        else if(objectName === 'k') return objects.k
-        else if(objectName === 'O') return objects.o
+.on(pickObject, (_, objectName) => {
+    if(objectName === 'z') return objects.z
+    else if(objectName === 'u') return objects.u
+    else if(objectName === 'b') return objects.b
+    else if(objectName === 'ch') return objects.ch
+    else if(objectName === 'h') return objects.h
+    else if(objectName === 'k') return objects.k
+    else if(objectName === 'o') return objects.o
+})
+    
+
+const initialCompeted = {
+    "z": false,
+    "u": false,
+    "b": false,
+    "ch": false,
+    "h": false,
+    "k": false,
+    "o": false,
+}
+
+type types = "z" | "u" | "b" | "ch" | "h" | "k" | "o" 
+
+
+export const completeObject = createEvent<types>()
+export const $competedObject = createStore(initialCompeted)
+    .on(completeObject, (cur, index) => {
+        const newObj = {...cur}
+        newObj[index] = true
+        console.log(newObj)
+        return newObj
     })

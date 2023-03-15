@@ -11,6 +11,7 @@ import background from './img/circles.png'
 
 const ObjectPage = () => {
     const pickedObject = useStore($pickedObject)
+    
 
     return (
         <GradientBackground gradient={`url('${pickedObject.object.figure}')`}>
@@ -21,7 +22,7 @@ const ObjectPage = () => {
             textOne={pickedObject.object.textOne}
             textTwo={pickedObject.object.textTwo}
             />
-            <GameRule/>
+            {pickedObject.askPage? <GameRule/> : null}
         </GradientBackground>
     )
 }

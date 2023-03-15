@@ -41,6 +41,7 @@ import sqrwin13 from './sqrwin13.png'
 import sqrwin14 from './sqrwin14.png'
 import sqrwin16 from './sqrwin16.png'
 import sqrwin17 from './sqrwin17.png'
+import { setCharModal } from "../../store/CharModal"
 
 
 
@@ -283,6 +284,11 @@ const TrubaPage = () => {
     }
 
 
+    const buttonHandler = () => {
+        setCurPage(3)
+        setCharModal()
+    }
+
     return (
         <GradientBackground gradient={`url('${back}')`}>
             <GameRule />
@@ -300,7 +306,7 @@ const TrubaPage = () => {
             {
                 isWin?
                 <div style={{position: 'absolute', bottom: '5%', right: '5%'}}>
-                    <GreenButton func={() => {setCurPage(3)}}>Красота!</GreenButton>
+                    <GreenButton func={buttonHandler}>Красота!</GreenButton>
                 </div>
                 :
                 <div style={{position: 'absolute', bottom: '5%', right: '5%'}}>

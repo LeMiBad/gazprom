@@ -1,7 +1,8 @@
 import { useStore } from "effector-react"
-import { FC } from "react"
+import { FC, useEffect, useState } from "react"
 import styled from "styled-components"
 import { $pickedObject } from "../../../store/askAnswers"
+import { setCharModal } from "../../../store/CharModal"
 import { setCurPage } from "../../../store/page"
 import GreenButton from "../../UI/GreenButton/GreenButton"
 
@@ -40,12 +41,35 @@ const WrapperForText = styled.div`
 
 const WrapperForObject: FC<IWrapperForObject> = ({textOne, textTwo}) => {
     const pickedObject = useStore($pickedObject)
+    const [wordForButton, setWordForButton] = useState('В игру')
+
+
+    useEffect(() => {
+        if(pickedObject.index === 'b') setWordForButton('Вот это да!')
+        if(pickedObject.index === 'z') setWordForButton('Ого!')
+        if(pickedObject.index === 'k') setWordForButton('Хмм.. Интересно')
+    }, [pickedObject])
 
 
     const buttonHandler = () => {
         if(pickedObject.index === 'h') setCurPage(5)
         else if(pickedObject.index === 'o') setCurPage(6)
         else if(pickedObject.index === 'ch') setCurPage(7)
+        else if(pickedObject.index === 'k') {
+            setCharModal()
+            setCurPage(3)
+        }
+        else if (pickedObject.index === 'z') {
+            setCharModal()
+            setCurPage(3)
+        }
+        else if (pickedObject.index === 'b') {
+            setCharModal()
+            setCurPage(3)
+        }
+        else if (pickedObject.index === 'u') {
+            setCurPage(8)
+        }
     }
 
 
@@ -55,7 +79,7 @@ const WrapperForObject: FC<IWrapperForObject> = ({textOne, textTwo}) => {
                 <p>{textOne}</p>
                 <p>{textTwo}</p>
             </WrapperForText>
-            <GreenButton func={buttonHandler}>Старт</GreenButton>
+            <GreenButton func={buttonHandler}>{wordForButton}</GreenButton>
         </StyledWrapperForObject>
     )
 }

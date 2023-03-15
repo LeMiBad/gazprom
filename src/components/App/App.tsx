@@ -11,6 +11,9 @@ import StartPage from "../StartPage/StartPage"
 import PolzunokPage from "../PolzunokPage/PolzunokPage"
 import PuzlePage from "../PuzlePage/PuzlePage"
 import TrubaPage from "../TrubaPage/TrubaPage"
+import KPage from "../KPage/KPage"
+import CharModal from "../CharModal/CharModal"
+import { $charModal } from "../../store/CharModal"
 
 
 const GlobalStyles = createGlobalStyle`
@@ -37,6 +40,7 @@ const GlobalStyles = createGlobalStyle`
 
 export const App = () => {
     const curPage = useStore($curPage)
+    const charModal = useStore($charModal)
     const Pages = [<StartPage/>, <AskPage/>, <PickObject/>, <Map/>, <ObjectPage/>, <PolzunokPage/>, <PuzlePage/>, <TrubaPage/>]
     const [isVertical, setIsVertical] = useState(window.innerHeight > window.innerWidth)
 
@@ -47,12 +51,15 @@ export const App = () => {
         }
     }, [])
 
+
     return (
         <>
             <GlobalStyles/>
+            {charModal? <CharModal/> : null}
             {isVertical? <BadResolutionPage></BadResolutionPage> 
             : 
-            Pages[curPage]}
+            <PuzlePage/>}
+            {/* Pages[curPage]} */}
         </>
     )
 }

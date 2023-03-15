@@ -44,7 +44,9 @@ const Img = styled.img`
 const PolzunokModal: FC<IPolzunokModal> = ({img, num, setModal, neededNum, setCurAsk, curAsk}) => {
 
     const buttonHandler = () => {
-        if(curAsk <= 2) {
+        if(neededNum !== num) setCurPage(3)
+
+        else if(curAsk <= 2) {
             setModal(false)
             setCurAsk(curAsk+1)
         }
