@@ -14,6 +14,7 @@ import TrubaPage from "../TrubaPage/TrubaPage"
 import KPage from "../KPage/KPage"
 import CharModal from "../CharModal/CharModal"
 import { $charModal } from "../../store/CharModal"
+import AvtoPage from "../AvtoPage/AvtoPage"
 
 
 const GlobalStyles = createGlobalStyle`
@@ -58,8 +59,7 @@ export const App = () => {
             {charModal? <CharModal/> : null}
             {isVertical? <BadResolutionPage></BadResolutionPage> 
             : 
-            <PuzlePage/>}
-            {/* Pages[curPage]} */}
+            <AvtoPage/>}
         </>
     )
 }
