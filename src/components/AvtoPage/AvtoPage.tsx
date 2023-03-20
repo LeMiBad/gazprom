@@ -11,6 +11,20 @@ import BigAvto from "./BigAvto"
 import MiddleAvto from "./MiddleAvto"
 import SmallAvto from "./SmallAvto"
 
+interface ICar {
+    car: JSX.Element
+    counter: number
+    type: string | null
+}
+
+interface SettedCar {
+    car: JSX.Element
+    counter: number
+    type: string | null
+    left: number
+    top: number
+    width: number
+}
 
 const Wrapper = styled.div`
     width: 100%;
@@ -37,13 +51,13 @@ const Row = styled.div`
     height: 25%;
 `
 
-const Сell = styled.div<{top: number, left: number, positive?: boolean, danger?: boolean, picked?: boolean}>`
+const Сell = styled.div<{top: number, left: number, rowI: number, color?: string}>`
     width: 20%;
     height: 100%;
     top: ${props => props.top}%;
     left: ${props => props.left}%;
-    transition: 0.3s;
-    background-color: ${props => props.positive? '#15b87780' : props.danger? '#d02c2c5a' : props.picked? '#15B8AD80' : 'rgba(256, 256, 256, 0.3)'};
+    /* transition: 0.3s; */
+    background-color: ${props => props.color};
     outline: 0.1px solid white;
     /* position: absolute; */
 `
@@ -96,9 +110,52 @@ const PickedAuto = styled.div<{anim?: boolean}>`
 const AvtoPage = () => {
     const [isWin, setIsWin] = useState(false)
     const [area, setArea] = useState(areaCell)
-    const [pickedAvto, setPickedAvto] = useState(<BigAvto/>)
-    const [cars, setCars] = useState([{car: <BigAvto/>, counter: 1}, {car: <MiddleAvto/>, counter: 3}, {car: <SmallAvto/>, counter: 2}])
+    const [last, setLast] = useState('00')
+    const [pickedAvto, setPickedAvto] = useState<ICar>({car: <></>, counter: 0, type: null})
+    const [cars, setCars] = useState([{car: <BigAvto/>, counter: 2, type: 'big'}, {car: <MiddleAvto/>, counter: 4, type: 'middle'}, {car: <SmallAvto/>, counter: 4, type: 'small'}])
     const [isShake, setIsShake] = useState(false)
+    const [settedCars, setSettedCars] = useState<SettedCar[]>([])
+
+
+    useEffect(() => {
+        let isCan = true
+
+        cars.forEach(car => {
+            if(car.counter) isCan = false
+        })
+
+        if(isCan) setIsWin(true)
+    }, [cars])
+
+
+    const placeCar = (car: ICar, rowI: number, cellI: number) => {
+        const newCars = [...settedCars]
+        const newArea = [...area]
+        const oldPlacers = [...cars]
+        let width = car.type === 'big'? 60 : car.type === 'middle'? 40 : 20
+
+        
+        newCars.push({...car, top: rowI * 25, left: cellI * 20, width})
+
+
+        for(let i = 0; i < newArea.length; i++) {
+            if(i === rowI) {
+                let close = width/20
+                for(let j = cellI; j < cellI + close; j++) {
+                    newArea[i][j].color = 'picked'
+                }
+            }
+        }
+
+        const newPlacers = oldPlacers.map(placer => {
+            if(placer.type === car.type) return {...placer, counter: placer.counter -1} 
+            else return placer
+        })
+
+        setCars(newPlacers)
+        setArea(newArea)
+        setSettedCars(newCars)
+    }
 
 
     useEffect(() => {
@@ -111,14 +168,115 @@ const AvtoPage = () => {
     }, [])
 
 
-    const PickAvto = (img: React.ReactElement) => {
-        if(img === pickedAvto) setPickedAvto(<></>)
-        else setPickedAvto(img)
-    }
-    
+    const paint = (cords: {rowI: number, i: number}[], color: string) => {
+        const newArea = [...area]
 
-    const touch = () => {
+        cords.forEach(cord => {
+            const y = cord.rowI
+            const x = cord.i
+
+            newArea[y][x].color = color
+
+            setArea(newArea)
+        })
+    }
+
+
+    const PickAvto = (avto: ICar) => {
+        if(avto.type === pickedAvto.type) setPickedAvto({car: <></>, counter: 0, type: null})
+        else setPickedAvto(avto)
+    }
+
+
+    const touchCell = (e: React.TouchEvent<HTMLDivElement>) => {
+        const X = e.changedTouches[0].clientX
+        const Y = e.changedTouches[0].clientY
+        const cell = document.elementFromPoint(X, Y)?.tagName === 'DIV'? document.elementFromPoint(X, Y) : null
+
+
+        setArea(areaCell)
+        if(!pickedAvto.type) return
         
+        if(cell?.tagName === 'DIV' && cell.classList.length) {
+            const rowI = cell.getAttribute('data-cords')?.split(',')[0]
+            const i = cell.getAttribute('data-cords')?.split(',')[1]
+
+
+            
+            if(last !== `${rowI}${i}`) {
+                setArea(area.map(row => {
+                    return row.map(cell => {
+                        if(cell.color === 'picked') {
+                            return cell
+                        }
+                        else return {...cell, color: 'null'}
+                    })
+                }))
+                setLast(`${rowI}${i}`)
+                return
+            }
+
+
+            if(pickedAvto.type === 'small' && rowI && i && area[+rowI][+i].color !== 'picked') {
+                paint([{rowI: +rowI, i: +i}], 'positive')
+            }
+            if(pickedAvto.type === 'big' && rowI && i) {
+                if(area[+rowI][+i + 2] && area[+rowI][+i + 2].color !== 'picked' && area[+rowI][+i + 1] && area[+rowI][+i + 1].color !== 'picked' && area[+rowI][+i].color !== 'picked' ) {
+                    paint([{rowI: +rowI, i: +i}, {rowI: +rowI, i: +i + 1}, {rowI: +rowI, i: +i + 2}], 'positive')
+                }
+                else if((!area[+rowI][+i + 2] || area[+rowI][+i + 2].color === 'picked') && area[+rowI][+i + 1] && area[+rowI][+i + 1].color !== 'picked' && area[+rowI][+i].color !== 'picked' ) {
+                    paint([{rowI: +rowI, i: +i}, {rowI: +rowI, i: +i + 1}], 'danger')
+                }
+                else if((!area[+rowI][+i + 2] || area[+rowI][+i + 2].color === 'picked') && (!area[+rowI][+i + 1] || area[+rowI][+i + 1].color === 'picked') && area[+rowI][+i].color !== 'picked' ) {
+                    paint([{rowI: +rowI, i: +i}], 'danger')
+                }
+            }
+            if(pickedAvto.type === 'middle' && rowI && i) {
+                if(area[+rowI][+i + 1] && area[+rowI][+i + 1].color !== 'picked' && area[+rowI][+i].color !== 'picked' ) {
+                    paint([{rowI: +rowI, i: +i}, {rowI: +rowI, i: +i + 1}], 'positive')
+                }
+                else if(!area[+rowI][+i + 1] || area[+rowI][+i + 1].color === 'picked') {
+                    paint([{rowI: +rowI, i: +i}], 'danger')
+                }
+            }
+        }
+    }
+
+
+    const end = (e: React.TouchEvent<HTMLDivElement>) => {
+        const X = e.changedTouches[0].clientX
+        const Y = e.changedTouches[0].clientY
+        const cell = document.elementFromPoint(X, Y)?.tagName === 'DIV'? document.elementFromPoint(X, Y) : null
+
+        if(!pickedAvto.type) return
+
+        if(cell?.tagName === 'DIV' && cell.classList.length) {
+            const rowI = cell.getAttribute('data-cords')?.split(',')[0]
+            const i = cell.getAttribute('data-cords')?.split(',')[1]
+
+            if(pickedAvto.type === 'small' && rowI && i && area[+rowI][+i].color !== 'picked') {
+                placeCar(pickedAvto, +rowI, +i)
+            }
+            if(pickedAvto.type === 'big' && rowI && i) {
+                if(area[+rowI][+i + 2] && area[+rowI][+i + 2].color !== 'picked' && area[+rowI][+i + 1] && area[+rowI][+i + 1].color !== 'picked' && area[+rowI][+i].color !== 'picked' ) {
+                    placeCar(pickedAvto, +rowI, +i)
+                }
+            }
+            if(pickedAvto.type === 'middle' && rowI && i) {
+                if(area[+rowI][+i + 1] && area[+rowI][+i + 1].color !== 'picked' && area[+rowI][+i].color !== 'picked' ) {
+                    placeCar(pickedAvto, +rowI, +i)
+                }
+            }
+        }
+
+        setArea(area.map(row => {
+            return row.map(cell => {
+                if(cell.color === 'picked') {
+                    return cell
+                }
+                else return {...cell, color: 'null'}
+            })
+        }))
     }
 
 
@@ -128,34 +286,43 @@ const AvtoPage = () => {
             <GazpromName textOne="Омский НПЗ" />
             <AvtoWrapper>
                 {cars.map(car => {
-                    return <AvtoCard key={car.counter} onClick={() => PickAvto(car.car)}>
+                    return <AvtoCard key={car.counter + car.type} onClick={() => PickAvto(car)}>
                         {car.car}
                         <AutoCounter>{car.counter}</AutoCounter>
                     </AvtoCard>
                 })}
             </AvtoWrapper>
             <PickedAuto anim={isShake}>
-                {pickedAvto}
+                {pickedAvto.car}
             </PickedAuto>
             <div style={{ position: 'absolute', background: 'linear-gradient(180deg, #15B8AD -9.43%, rgba(21, 112, 184, 0.49) 41.3%, rgba(7, 29, 47, 0.7) 100%)', width: '100%', height: '100vh', zIndex: -1 }}></div>
             <Wrapper>
-                <GameWrapper>
-                    {area.map(row => {
+                <GameWrapper onTouchEnd={(e) => end(e)} onTouchMove={(e) => touchCell(e)}>
+                    {area.map((row, rowI) => {
                         return <Row>
-                            {row.map(cell => {
-                                return <Сell key={cell.left + cell.top} left={cell.left} top={cell.top}></Сell>
+                            {row.map((cell, cellI) => {
+                                const color = cell.color === 'positive'? '#15b87780' : cell.color === 'danger'? '#d02c2c5a' : cell.color === 'picked'? '#15B8AD80' : 'rgba(256, 256, 256, 0.3)'
+                                return <Сell color={color} data-cords={cell.id} rowI={cell.id[0]} key={cell.id[0]+cell.id[1]} left={cell.left} top={cell.top}></Сell>
                             })}
                         </Row>
                     })}
-                    <div style={{position: 'absolute', left: 10}}>
+                    {/* <div style={{position: 'absolute', width: '60%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <BigAvto></BigAvto>
                     </div>
-                    <div style={{position: 'absolute', left: 0, top: '25%'}}>
+                    <div style={{position: 'absolute', width: '40%', left: 0, top: '25%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <MiddleAvto></MiddleAvto>
                     </div>
-                    <div style={{position: 'absolute', left: 0, top: '55%'}}>
+                    <div style={{position: 'absolute', width: '20%', left: 0, top: '55%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <SmallAvto></SmallAvto>
-                    </div>
+                    </div> */}
+                    {settedCars.map(car => {
+                        if(car.type !== 'small') return <div style={{position: 'absolute', width: `${car.width}%`, left: `${car.left}%`, top: `${car.top}%`, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                                            {car.car}
+                                                        </div>
+                        else return <div style={{position: 'absolute', width: `${car.width}%`, left: `${car.left}%`, top: `${car.top}%`, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '20%'}}>
+                                        {car.car}
+                                    </div>
+                    })}
                 </GameWrapper>
             </Wrapper>
             {
