@@ -26,6 +26,7 @@ const GlobalStyles = createGlobalStyle`
         sans-serif;
         user-select: none;
         /* overflow: hidden; */
+        overscroll-behavior: none;
         @media (min-width: 1024px) {
             h1 {
                 font-size: 32px !important;
