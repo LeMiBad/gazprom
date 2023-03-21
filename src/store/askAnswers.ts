@@ -54,6 +54,7 @@ interface IObj {
             text: string,
             img: string
         } | null
+        char: string[]
     },
     u: {
         name: string,
@@ -70,6 +71,7 @@ interface IObj {
             text: string,
             img: string
         } | null
+        char: string[]
     },
     b: {
         name: string,
@@ -86,6 +88,7 @@ interface IObj {
             text: string,
             img: string
         } | null
+        char: string[]
     },
     ch: {
         name: string,
@@ -102,6 +105,7 @@ interface IObj {
             text: string,
             img: string
         } | null
+        char: string[]
     },
     h: {
         name: string,
@@ -118,6 +122,7 @@ interface IObj {
             text: string,
             img: string
         } | null
+        char: string[]
     },
     k: {
         name: string,
@@ -134,6 +139,7 @@ interface IObj {
             text: string,
             img: string
         } | null
+        char: string[]
     },
     o: {
         name: string,
@@ -150,6 +156,7 @@ interface IObj {
             text: string,
             img: string
         } | null
+        char: string[]
     },
 }
 
@@ -168,6 +175,7 @@ const objects = {
             textTwo: '',
             figure: backObjFigureZ
         },
+        char: ['А'],
         askPage: null
     },
     u: {
@@ -185,7 +193,8 @@ const objects = {
         askPage: {
             text: 'Длинным касанием перетаскивай объекты на поле. Расположи спецтехнику так, чтобы поместились все объекты без пустых участков. Для постановки ты можешь поворачивать объекты коротким касанием.',
             img: askU
-        }
+        },
+        char: ['И'],
     },
     b: {
         name: 'Бованенковское НГКМ',
@@ -199,6 +208,7 @@ const objects = {
             textTwo: '',
             figure: backObjFigureB
         },
+        char: ['В'],
         askPage: null
     },
     ch: {
@@ -216,7 +226,8 @@ const objects = {
         askPage: {
             text: 'Нажимай на участки труб, чтобы крутить их по часовой стрелке. Собери газопровод так, чтобы он соединял Пункт А с Пунктом Б.',
             img: askCH
-        }
+        },
+        char: ['И', 'И'],
     },
     h: {
         name: 'Харасавэйское ГКМ',
@@ -233,7 +244,8 @@ const objects = {
         askPage: {
             text: 'Читай вопросы и доверься интуиции: располагай ползунок там, где, тебе кажется, кроется верный ответ!',
             img: askH
-        }
+        },
+        char: ['Н', 'Н'],
     },
     k: {
         name: 'Ковыктинское ГКМ',
@@ -247,6 +259,7 @@ const objects = {
             textTwo: '',
             figure: backObjFigureK
         },
+        char: ['Ц'],
         askPage: null
     },
     o: {
@@ -264,7 +277,8 @@ const objects = {
         askPage: {
             text: 'Тапай на кусочки, чтобы двигать их рядом на пустую ячейку.',
             img: askO
-        }
+        },
+        char: ['О'],
     }
 }
 

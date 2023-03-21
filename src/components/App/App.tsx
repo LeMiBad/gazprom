@@ -15,6 +15,7 @@ import KPage from "../KPage/KPage"
 import CharModal from "../CharModal/CharModal"
 import { $charModal } from "../../store/CharModal"
 import AvtoPage from "../AvtoPage/AvtoPage"
+import FinalPage from "../FinalPage/FinalPage"
 
 
 const GlobalStyles = createGlobalStyle`
@@ -43,7 +44,7 @@ const GlobalStyles = createGlobalStyle`
 export const App = () => {
     const curPage = useStore($curPage)
     const charModal = useStore($charModal)
-    const Pages = [<StartPage/>, <AskPage/>, <PickObject/>, <Map/>, <ObjectPage/>, <PolzunokPage/>, <PuzlePage/>, <TrubaPage/>]
+    const Pages = [<StartPage/>, <AskPage/>, <PickObject/>, <Map/>, <ObjectPage/>, <PolzunokPage/>, <PuzlePage/>, <TrubaPage/>, <AvtoPage/>, <FinalPage/>]
     const [isVertical, setIsVertical] = useState(window.innerHeight > window.innerWidth)
 
 
@@ -60,7 +61,7 @@ export const App = () => {
             {charModal? <CharModal/> : null}
             {isVertical? <BadResolutionPage></BadResolutionPage> 
             : 
-            <AvtoPage/>}
+            Pages[curPage]}
 
         </>
     )

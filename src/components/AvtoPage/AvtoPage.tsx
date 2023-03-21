@@ -10,6 +10,7 @@ import {areaCell} from './area'
 import BigAvto from "./BigAvto"
 import MiddleAvto from "./MiddleAvto"
 import SmallAvto from "./SmallAvto"
+import { setCharModal } from "../../store/CharModal"
 
 interface ICar {
     car: JSX.Element
@@ -116,6 +117,17 @@ const AvtoPage = () => {
     const [isShake, setIsShake] = useState(false)
     const [settedCars, setSettedCars] = useState<SettedCar[]>([])
 
+    const reload = () => {
+        setPickedAvto({car: <></>, counter: 0, type: null})
+        setArea(areaCell.map(row => {
+            return row.map(item => {
+                item.color = 'null'
+                return item
+            })
+        }))
+        setCars([{car: <BigAvto/>, counter: 2, type: 'big'}, {car: <MiddleAvto/>, counter: 4, type: 'middle'}, {car: <SmallAvto/>, counter: 4, type: 'small'}])
+        setSettedCars([])
+    }
 
     useEffect(() => {
         let isCan = true
@@ -184,7 +196,7 @@ const AvtoPage = () => {
 
     const PickAvto = (avto: ICar) => {
         if(avto.type === pickedAvto.type) setPickedAvto({car: <></>, counter: 0, type: null})
-        else setPickedAvto(avto)
+        else if(avto.counter) setPickedAvto(avto)
     }
 
 
@@ -306,15 +318,6 @@ const AvtoPage = () => {
                             })}
                         </Row>
                     })}
-                    {/* <div style={{position: 'absolute', width: '60%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <BigAvto></BigAvto>
-                    </div>
-                    <div style={{position: 'absolute', width: '40%', left: 0, top: '25%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <MiddleAvto></MiddleAvto>
-                    </div>
-                    <div style={{position: 'absolute', width: '20%', left: 0, top: '55%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <SmallAvto></SmallAvto>
-                    </div> */}
                     {settedCars.map(car => {
                         if(car.type !== 'small') return <div style={{position: 'absolute', width: `${car.width}%`, left: `${car.left}%`, top: `${car.top}%`, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                                             {car.car}
@@ -325,16 +328,19 @@ const AvtoPage = () => {
                     })}
                 </GameWrapper>
             </Wrapper>
-            {
-                isWin?
-                <div style={{position: 'absolute', bottom: '5%', right: '5%'}}>
-                    <GreenButton func={() => {setCurPage(3)}}>Красота!</GreenButton>
+                {
+                    isWin?
+                    <div style={{position: 'absolute', bottom: '5%', right: '5%'}}>
+                        <GreenButton func={() => {setCharModal()}}>Красота!</GreenButton>
+                    </div>
+                    :
+                    <div style={{position: 'absolute', bottom: '5%', right: '5%'}}>
+                        <GreenButton inActive func={() => {}}>Красота!</GreenButton>
+                    </div>
+                }
+                <div style={{position: 'absolute', bottom: '20%', right: '5%'}}>
+                    <GreenButton func={reload}>Обнулить</GreenButton>
                 </div>
-                :
-                <div style={{position: 'absolute', bottom: '5%', right: '5%'}}>
-                    <GreenButton inActive func={() => {}}>Красота!</GreenButton>
-                </div>
-            }
         </GradientBackground>
     )
 }   

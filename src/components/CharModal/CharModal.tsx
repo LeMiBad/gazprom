@@ -13,6 +13,7 @@ import uBack from './uBack.png'
 import zBack from './zBack.png'
 import hBack from './hBack.png'
 import { setCharModal } from "../../store/CharModal"
+import Char from "../UI/Char/Char"
 
 const ModalPhone = styled.div`
     position: absolute;
@@ -123,8 +124,14 @@ const CharModal: FC<IObjectModal> = ({close, data}) => {
                         {/* <CrossWrapper><Cross func={close}/></CrossWrapper> */}
                         {/* <ModalName>{data.name}</ModalName> */}
                         {/* <ModalDesk>{data.desk}</ModalDesk> */}
+                        <h1 style={{position: 'absolute', color: 'white', bottom: '35%', zIndex: 1000, fontSize: 16,
+                                    left: '5%'
+                                }}>{currentObj.index === 'ch'? 'Тебе открылись буквы:' : 'Тебе открылась буква:'}</h1>
+                        <div style={{position: 'absolute', bottom: '15%', left: '5%', zIndex: 1000}}>
+                            <Char chars={currentObj.char}/>
+                        </div>
                         <ButtonWrapper>
-                            <GreenButton func={clickHandler}>Перейти</GreenButton>
+                            <GreenButton func={clickHandler}>Забрать</GreenButton>
                         </ButtonWrapper>
                     </Modal>
             </ModalWrapper>
