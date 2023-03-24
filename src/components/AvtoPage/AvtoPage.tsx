@@ -42,6 +42,10 @@ const Wrapper = styled.div`
 const GameWrapper = styled.div`
     width: 300px; 
     height: 240px; 
+    @media (min-width: 1024px) and (max-width: 1440px) {
+        width: 500px !important;
+        height: 400px !important;
+    }
     position: relative;
     display: flex;
     flex-direction: column;
@@ -55,6 +59,7 @@ const Row = styled.div`
 const Сell = styled.div<{top: number, left: number, rowI: number, color?: string}>`
     width: 20%;
     height: 100%;
+    cursor: pointer;
     top: ${props => props.top}%;
     left: ${props => props.left}%;
     /* transition: 0.3s; */
@@ -77,11 +82,15 @@ const AvtoCard = styled.div`
     display: flex;
     align-items: flex-end;
     gap: 5px;
+    cursor: pointer;
 `
 
 const AutoCounter = styled.div`
     color: white;
     font-weight: 600;
+    @media (min-width: 1024px) and (max-width: 1440px) {
+        font-size: 33px;
+    }
 `
 
 const AvtoAnim = keyframes`
@@ -107,15 +116,15 @@ const PickedAuto = styled.div<{anim?: boolean}>`
     align-items: center;
 `
 
-
 const AvtoPage = () => {
     const [isWin, setIsWin] = useState(false)
     const [area, setArea] = useState(areaCell)
     const [last, setLast] = useState('00')
     const [pickedAvto, setPickedAvto] = useState<ICar>({car: <></>, counter: 0, type: null})
-    const [cars, setCars] = useState([{car: <BigAvto/>, counter: 2, type: 'big'}, {car: <MiddleAvto/>, counter: 4, type: 'middle'}, {car: <SmallAvto/>, counter: 4, type: 'small'}])
+    const [cars, setCars] = useState([{car: <BigAvto/>, counter: 2, type: 'big'}, {car: <MiddleAvto/>, counter: 4, type: 'middle'}, {car: <SmallAvto/>, counter: 5, type: 'small'}])
     const [isShake, setIsShake] = useState(false)
     const [settedCars, setSettedCars] = useState<SettedCar[]>([])
+    const [isClicked, setIsClicked] = useState(false)
 
     const reload = () => {
         setPickedAvto({car: <></>, counter: 0, type: null})
@@ -138,7 +147,6 @@ const AvtoPage = () => {
 
         if(isCan) setIsWin(true)
     }, [cars])
-
 
     const placeCar = (car: ICar, rowI: number, cellI: number) => {
         const newCars = [...settedCars]
@@ -291,11 +299,99 @@ const AvtoPage = () => {
         }))
     }
 
+    
+    const mouseCell = (e: React.MouseEvent<HTMLDivElement>) => {
+        const X = e.clientX
+        const Y = e.clientY
+        const cell = document.elementFromPoint(X, Y)?.tagName === 'DIV'? document.elementFromPoint(X, Y) : null
+
+
+        setArea(areaCell)
+        if(!pickedAvto.type) return
+        
+        if(cell?.tagName === 'DIV' && cell.classList.length) {
+            const rowI = cell.getAttribute('data-cords')?.split(',')[0]
+            const i = cell.getAttribute('data-cords')?.split(',')[1]
+
+            
+            if(last !== `${rowI}${i}`) {
+                setArea(area.map(row => {
+                    return row.map(cell => {
+                        if(cell.color === 'picked') {
+                            return cell
+                        }
+                        else return {...cell, color: 'null'}
+                    })
+                }))
+                setLast(`${rowI}${i}`)
+                return
+            }
+
+            if(pickedAvto.type === 'small' && rowI && i && area[+rowI][+i].color !== 'picked') {
+                paint([{rowI: +rowI, i: +i}], 'positive')
+            }
+            if(pickedAvto.type === 'big' && rowI && i) {
+                if(area[+rowI][+i + 2] && area[+rowI][+i + 2].color !== 'picked' && area[+rowI][+i + 1] && area[+rowI][+i + 1].color !== 'picked' && area[+rowI][+i].color !== 'picked' ) {
+                    paint([{rowI: +rowI, i: +i}, {rowI: +rowI, i: +i + 1}, {rowI: +rowI, i: +i + 2}], 'positive')
+                }
+                else if((!area[+rowI][+i + 2] || area[+rowI][+i + 2].color === 'picked') && area[+rowI][+i + 1] && area[+rowI][+i + 1].color !== 'picked' && area[+rowI][+i].color !== 'picked' ) {
+                    paint([{rowI: +rowI, i: +i}, {rowI: +rowI, i: +i + 1}], 'danger')
+                }
+                else if((!area[+rowI][+i + 2] || area[+rowI][+i + 2].color === 'picked') && (!area[+rowI][+i + 1] || area[+rowI][+i + 1].color === 'picked') && area[+rowI][+i].color !== 'picked' ) {
+                    paint([{rowI: +rowI, i: +i}], 'danger')
+                }
+            }
+            if(pickedAvto.type === 'middle' && rowI && i) {
+                if(area[+rowI][+i + 1] && area[+rowI][+i + 1].color !== 'picked' && area[+rowI][+i].color !== 'picked' ) {
+                    paint([{rowI: +rowI, i: +i}, {rowI: +rowI, i: +i + 1}], 'positive')
+                }
+                else if(!area[+rowI][+i + 1] || area[+rowI][+i + 1].color === 'picked') {
+                    paint([{rowI: +rowI, i: +i}], 'danger')
+                }
+            }
+        }
+    }
+
+    const mouseEnd = (e: React.MouseEvent<HTMLDivElement>) => {
+        const X = e.clientX
+        const Y = e.clientY
+        const cell = document.elementFromPoint(X, Y)?.tagName === 'DIV'? document.elementFromPoint(X, Y) : null
+
+        if(!pickedAvto.type) return
+
+        if(cell?.tagName === 'DIV' && cell.classList.length) {
+            const rowI = cell.getAttribute('data-cords')?.split(',')[0]
+            const i = cell.getAttribute('data-cords')?.split(',')[1]
+
+            if(pickedAvto.type === 'small' && rowI && i && area[+rowI][+i].color !== 'picked') {
+                placeCar(pickedAvto, +rowI, +i)
+            }
+            if(pickedAvto.type === 'big' && rowI && i) {
+                if(area[+rowI][+i + 2] && area[+rowI][+i + 2].color !== 'picked' && area[+rowI][+i + 1] && area[+rowI][+i + 1].color !== 'picked' && area[+rowI][+i].color !== 'picked' ) {
+                    placeCar(pickedAvto, +rowI, +i)
+                }
+            }
+            if(pickedAvto.type === 'middle' && rowI && i) {
+                if(area[+rowI][+i + 1] && area[+rowI][+i + 1].color !== 'picked' && area[+rowI][+i].color !== 'picked' ) {
+                    placeCar(pickedAvto, +rowI, +i)
+                }
+            }
+        }
+
+        setArea(area.map(row => {
+            return row.map(cell => {
+                if(cell.color === 'picked') {
+                    return cell
+                }
+                else return {...cell, color: 'null'}
+            })
+        }))
+    }
 
     return (
         <GradientBackground gradient={`url('${back}')`}>
             <GameRule />
-            <GazpromName textOne="Омский НПЗ" />
+            <GazpromName textOne="Уренгойское НГКМ" />
             <AvtoWrapper>
                 {cars.map(car => {
                     return <AvtoCard key={car.counter + car.type} onClick={() => PickAvto(car)}>
@@ -309,7 +405,7 @@ const AvtoPage = () => {
             </PickedAuto>
             <div style={{ position: 'absolute', background: 'linear-gradient(180deg, #15B8AD -9.43%, rgba(21, 112, 184, 0.49) 41.3%, rgba(7, 29, 47, 0.7) 100%)', width: '100%', height: '100vh', zIndex: -1 }}></div>
             <Wrapper>
-                <GameWrapper onTouchEnd={(e) => end(e)} onTouchMove={(e) => touchCell(e)}>
+                <GameWrapper onMouseUp={mouseEnd} onMouseMove={mouseCell} onTouchEnd={end} onTouchMove={touchCell}>
                     {area.map((row, rowI) => {
                         return <Row>
                             {row.map((cell, cellI) => {

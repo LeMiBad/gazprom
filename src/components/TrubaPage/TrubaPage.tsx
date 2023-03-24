@@ -66,6 +66,7 @@ const GameWrapper = styled.div`
 
 const ImgCard = styled.img<{top: number, left: number, rotate: number}>`
     width: 20%;
+    cursor: pointer;
     height: 25%;
     top: ${props => props.top}%;
     left: ${props => props.left}%;
@@ -211,52 +212,58 @@ const TrubaPage = () => {
         if(isWin) return
 
         const newArr = [...area]
+        
+        newArr[i].rotate += 90
 
-        if(newArr[i].rotate === 360) newArr[i].rotate = 0
-        else newArr[i].rotate += 90
+        const val = (num: number) => {
+            while(num > 360) {
+                num -= 360
+            }
+            return num
+        }
 
         let isNowWin = true
 
-        if(![180, 360, 0].includes(newArr[0].rotate)) {
+        if(![180, 360, 0].includes(val(newArr[0].rotate))) {
             isNowWin = false
         }
-        if(![180, 360, 0].includes(newArr[1].rotate)) {
+        if(![180, 360, 0].includes(val(newArr[1].rotate))) {
             isNowWin = false
         }
-        if(newArr[2].rotate !== 360) {
+        if(val(newArr[2].rotate) !== 360) {
             isNowWin = false
         }
-        if(![360, 270, 0].includes(newArr[3].rotate)) {
+        if(![360, 270, 0].includes(val(newArr[3].rotate))) {
             isNowWin = false
         }
-        if(![360, 180].includes(newArr[4].rotate)) {
+        if(![360, 180].includes(val(newArr[4].rotate))) {
             isNowWin = false
         }
-        if(![360, 270, 0].includes(newArr[5].rotate)) {
+        if(![360, 270, 0].includes(val(newArr[5].rotate))) {
             isNowWin = false
         }
-        if(newArr[6].rotate !== 360) {
+        if(val(newArr[6].rotate) !== 360) {
             isNowWin = false
         }
-        if(![0, 180, 360].includes(newArr[7].rotate)) {
+        if(![0, 180, 360].includes(val(newArr[7].rotate))) {
             isNowWin = false
         }
-        if(![0, 180, 360].includes(newArr[8].rotate)) {
+        if(![0, 180, 360].includes(val(newArr[8].rotate))) {
             isNowWin = false
         }
-        if(![0, 180, 360].includes(newArr[11].rotate)) {
+        if(![0, 180, 360].includes(val(newArr[11].rotate))) {
             isNowWin = false
         }
-        if(![360, 0].includes(newArr[12].rotate)) {
+        if(![360, 0].includes(val(newArr[12].rotate))) {
             isNowWin = false
         }
-        if(![360, 0].includes(newArr[13].rotate)) {
+        if(![360, 0].includes(val(newArr[13].rotate))) {
             isNowWin = false
         }
-        if(![0, 180, 360].includes(newArr[15].rotate)) {
+        if(![0, 180, 360].includes(val(newArr[15].rotate))) {
             isNowWin = false
         }
-        if(![360, 0].includes(newArr[16].rotate)) {
+        if(![360, 0].includes(val(newArr[16].rotate))) {
             isNowWin = false
         }
 

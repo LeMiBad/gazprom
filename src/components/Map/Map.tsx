@@ -48,6 +48,12 @@ const Russia = styled.img`
     }
 `
     
+const MarkWrapper = styled.div`
+    position: relative;
+    svg {
+        cursor: pointer;
+    }
+`
 
 const Map = () => {
     const completed = useStore($competedObject)
@@ -73,7 +79,7 @@ const Map = () => {
             <GazpromName/>
             <div style={{position: 'absolute', background: 'linear-gradient(-180deg, rgb(21, 184, 173) -13.59%, rgba(21, 112, 184, 0.49) 107.08%)', width: '100%', height: '100vh', zIndex: -1}}></div>
             <RussiaWrapper>
-                <div style={{position: 'relative'}}>
+                <MarkWrapper>
                     <Russia alt="rus" src={rus}/>
                     <Mark1 vis/>
                     <Mark2 vis/>
@@ -82,7 +88,7 @@ const Map = () => {
                     <Mark5 vis/>
                     <Mark6 vis/>
                     <Mark7 vis/>
-                </div>
+                </MarkWrapper>
             </RussiaWrapper>
         </GradientBackground>
     )

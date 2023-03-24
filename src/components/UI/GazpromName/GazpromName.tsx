@@ -21,7 +21,7 @@ const StyledGazpromName = styled.h1`
     background-color: #bee4fa4d;
     backdrop-filter: blur(3px);
     box-sizing: border-box;
-    padding: 0 10px;
+    padding: 0 10px 0 40px;
     height: 43px;
     @media (max-width: 768px) {
         font-size: 22px;

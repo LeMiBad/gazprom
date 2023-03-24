@@ -22,7 +22,6 @@ const ObjectPage = () => {
             textOne={pickedObject.object.textOne}
             textTwo={pickedObject.object.textTwo}
             />
-            {pickedObject.askPage? <GameRule/> : null}
         </GradientBackground>
     )
 }

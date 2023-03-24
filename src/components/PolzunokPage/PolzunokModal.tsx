@@ -1,5 +1,6 @@
 import { FC } from "react"
 import styled from "styled-components"
+import { setCharModal } from "../../store/CharModal"
 import { setCurPage } from "../../store/page"
 import GreenButton from "../UI/GreenButton/GreenButton"
 
@@ -7,10 +8,11 @@ import GreenButton from "../UI/GreenButton/GreenButton"
 interface IPolzunokModal {
     img: string,
     num: number,
-    neededNum: number,
+    neededNum: string,
     setModal: React.Dispatch<React.SetStateAction<boolean>>,
     setCurAsk: React.Dispatch<React.SetStateAction<number>>,
     curAsk: number
+    chunk: number
 }
 
 
@@ -41,17 +43,18 @@ const Img = styled.img`
 `
 
 
-const PolzunokModal: FC<IPolzunokModal> = ({img, num, setModal, neededNum, setCurAsk, curAsk}) => {
+const PolzunokModal: FC<IPolzunokModal> = ({img, num, setModal, neededNum, setCurAsk, curAsk, chunk}) => {
 
     const buttonHandler = () => {
         // if(neededNum !== num) setCurPage(3)
 
-        if(curAsk <= 2) {
+        if(curAsk < 2) {
             setModal(false)
             setCurAsk(curAsk+1)
         }
         else {
-            // setCurPage(3)
+            setCharModal()
+            setCurPage(3)
         }
     }
 
@@ -63,7 +66,7 @@ const PolzunokModal: FC<IPolzunokModal> = ({img, num, setModal, neededNum, setCu
                     <GreenButton func={buttonHandler}>Далее</GreenButton>
                 </div>
                 <div style={{color: 'white', fontWeight: 600, position: 'absolute', bottom: '5%', left: '7%', zIndex: 123121111111111}}>
-                    {neededNum === num? 'Бинго!' : 'Не совсем!'}<br/>Верный ответ: {neededNum}
+                    {+neededNum.split(' ').join('') === num || +neededNum.split(' ').join('') === num + chunk || +neededNum === num - chunk? 'Бинго!' : 'Не совсем!'}<br/>Верный ответ: {neededNum}
                 </div>
                 <div style={{position: 'absolute', width: '100%', height: '100%', background: 'linear-gradient(0deg, rgba(21, 112, 184, 0.96) 20%, rgba(0, 0, 0, 0) 100%)', zIndex: 101000101}}></div>
                 <Img alt="eq" src={img}></Img>

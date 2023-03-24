@@ -16,6 +16,7 @@ import CharModal from "../CharModal/CharModal"
 import { $charModal } from "../../store/CharModal"
 import AvtoPage from "../AvtoPage/AvtoPage"
 import FinalPage from "../FinalPage/FinalPage"
+import NextPage from "../NextPage/NextPage"
 
 
 const GlobalStyles = createGlobalStyle`
@@ -30,7 +31,7 @@ const GlobalStyles = createGlobalStyle`
         overscroll-behavior: none;
         @media (min-width: 1024px) {
             h1 {
-                font-size: 32px !important;
+                font-size: 20px !important;
             }
             
             p {
@@ -44,7 +45,7 @@ const GlobalStyles = createGlobalStyle`
 export const App = () => {
     const curPage = useStore($curPage)
     const charModal = useStore($charModal)
-    const Pages = [<StartPage/>, <AskPage/>, <PickObject/>, <Map/>, <ObjectPage/>, <PolzunokPage/>, <PuzlePage/>, <TrubaPage/>, <AvtoPage/>, <FinalPage/>]
+    const Pages = [<StartPage/>, <AskPage/>, <PickObject/>, <Map/>, <ObjectPage/>, <PolzunokPage/>, <PuzlePage/>, <TrubaPage/>, <AvtoPage/>, <FinalPage/>, <NextPage/>]
     const [isVertical, setIsVertical] = useState(window.innerHeight > window.innerWidth)
 
 
@@ -62,7 +63,6 @@ export const App = () => {
             {isVertical? <BadResolutionPage></BadResolutionPage> 
             : 
             Pages[curPage]}
-
         </>
     )
 }

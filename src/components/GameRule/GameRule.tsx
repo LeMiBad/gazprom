@@ -8,6 +8,7 @@ import Znak from "./Znak"
 const GameRuleWrapper = styled.div`
     position: absolute;
     right: 5%;
+    cursor: pointer;
     top: 9%;
     width: 45px;
     height: 45px;
@@ -74,6 +75,7 @@ const ButtonWrapper = styled.div`
     position: absolute;
     right: 5%;
     bottom: -25px;
+    cursor: pointer;
 `
 
 

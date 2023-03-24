@@ -89,27 +89,29 @@ const AskPage = () => {
     const [cur, setCur] = useState(0)
 
     const pickHandler = (index: number) => {
-        if(index === pickAnswer) setPickAnswer(-1)
-        else {
-            setPickAnswer(index)
+        setPickAnswer(index)
+
+
+
+        setTimeout(() => {
             setAnswers(() => {
                 const result = [...answers]
                 result[cur] = index
                 return result
             })
-        }
-    }
     
-    const buttonHandler = () => {
-        if(cur === 2) {
-            setAskAnswers(answers)
-            setCurPage(2)
-            return
-        }
-        else {
-            setPickAnswer(-1)
-            setCur(cur+1)
-        }
+            if(cur === 2) {
+                const result = [...answers]
+                result[cur] = index
+                setAskAnswers(result)
+                setCurPage(10)
+                return
+            }
+            else {
+                setPickAnswer(-1)
+                setCur(cur+1)
+            }
+        }, 300)
     }
 
     return (
@@ -123,13 +125,6 @@ const AskPage = () => {
                         return <Answer picked={i === pickAnswer? true : false} key={i} onClick={() => pickHandler(i)}>{answer}</Answer>
                     })}
                 </RightSide>
-                {pickAnswer !== -1? 
-                    <div style={{position: 'absolute', left: 0, bottom: '5vh'}}>
-                        <GreenButton func={buttonHandler}>Далее</GreenButton>
-                    </div> 
-                    : 
-                    null
-                }
                 <AskText>{current[cur].ask}</AskText>
                 <img style={{position: 'absolute', left: 0, bottom: 0, width: '45%', zIndex: -1}} alt="" src={current[cur].img} />
             </Wrapper>

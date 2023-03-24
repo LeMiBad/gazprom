@@ -15,9 +15,10 @@ const Button = styled.button<{width?: number}>`
     ${props => props.width? `width: ${props.width}%;` : ''}
     font-weight: 600;
     box-sizing: border-box;
-    padding: 1vh 3vw;
+    padding: 1vh 4vw;
     cursor: pointer;
     height: 50px;
+    font-size: 15px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     :hover {
         background: linear-gradient(270deg, #1b82d6 -78.05%, #18dacd 110.36%);
