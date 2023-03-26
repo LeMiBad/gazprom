@@ -61,6 +61,10 @@ const GameWrapper = styled.div`
     width: 300px; 
     height: 240px; 
     position: relative;
+    @media (min-width: 1024px) {
+        width: 600px !important;
+        height: 480px !important;
+    }
 `
 
 
@@ -223,7 +227,10 @@ const TrubaPage = () => {
         }
 
         let isNowWin = true
+        let isSecondWin = true
+        let isThirdWin = true
 
+        
         if(![180, 360, 0].includes(val(newArr[0].rotate))) {
             isNowWin = false
         }
@@ -233,11 +240,20 @@ const TrubaPage = () => {
         if(val(newArr[2].rotate) !== 360) {
             isNowWin = false
         }
+        if(val(newArr[2].rotate) !== 270) {
+            isThirdWin = false
+        }
         if(![360, 270, 0].includes(val(newArr[3].rotate))) {
             isNowWin = false
+            isSecondWin = false
+        }
+        if(![360, 180, 0].includes(val(newArr[3].rotate))) {
+            isThirdWin = false
         }
         if(![360, 180].includes(val(newArr[4].rotate))) {
             isNowWin = false
+            isSecondWin = false
+            isThirdWin = false
         }
         if(![360, 270, 0].includes(val(newArr[5].rotate))) {
             isNowWin = false
@@ -245,17 +261,36 @@ const TrubaPage = () => {
         if(val(newArr[6].rotate) !== 360) {
             isNowWin = false
         }
+        if(val(newArr[6].rotate) !== 270) {
+            isSecondWin = false
+            isThirdWin = false
+        }
         if(![0, 180, 360].includes(val(newArr[7].rotate))) {
             isNowWin = false
+        }
+        if(![0, 90, 360].includes(val(newArr[7].rotate))) {
+            isThirdWin = false
+        }
+        if(![270].includes(val(newArr[7].rotate))) {
+            isSecondWin = false
         }
         if(![0, 180, 360].includes(val(newArr[8].rotate))) {
             isNowWin = false
         }
+        if(![0, 180, 360].includes(val(newArr[8].rotate))) {
+            isSecondWin = false
+        }
         if(![0, 180, 360].includes(val(newArr[11].rotate))) {
             isNowWin = false
         }
+        if(![0, 180, 360].includes(val(newArr[11].rotate))) {
+            isSecondWin = false
+        }
         if(![360, 0].includes(val(newArr[12].rotate))) {
             isNowWin = false
+        }
+        if(![360, 0].includes(val(newArr[12].rotate))) {
+            isSecondWin = false
         }
         if(![360, 0].includes(val(newArr[13].rotate))) {
             isNowWin = false
@@ -266,6 +301,7 @@ const TrubaPage = () => {
         if(![360, 0].includes(val(newArr[16].rotate))) {
             isNowWin = false
         }
+        
 
         if(isNowWin) {
             setIsWin(isNowWin)
@@ -281,6 +317,30 @@ const TrubaPage = () => {
             newArr[11].img = sqrwin12
             newArr[12].img = sqrwin13
             newArr[13].img = sqrwin14
+            newArr[15].img = sqrwin16
+            newArr[16].img = sqrwin17
+        }
+        else if (isSecondWin) {
+            setIsWin(isSecondWin)
+            newArr[3].img = sqrwin4
+            newArr[4].img = sqrwin5
+            newArr[6].img = sqrwin7
+            newArr[7].img = sqrwin8
+            newArr[8].img = sqrwin9
+            newArr[11].img = sqrwin12
+            newArr[12].img = sqrwin13
+            newArr[13].img = sqrwin14
+            newArr[15].img = sqrwin16
+            newArr[16].img = sqrwin17
+        }
+        else if (isThirdWin) {
+            setIsWin(isThirdWin)
+            newArr[2].img = sqrwin7
+            newArr[3].img = sqrwin4
+            newArr[4].img = sqrwin5
+            newArr[6].img = sqrwin7
+            newArr[7].img = sqrwin8
+            newArr[11].img = sqrwin12
             newArr[15].img = sqrwin16
             newArr[16].img = sqrwin17
         }

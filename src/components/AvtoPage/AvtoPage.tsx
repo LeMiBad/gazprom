@@ -42,7 +42,7 @@ const Wrapper = styled.div`
 const GameWrapper = styled.div`
     width: 300px; 
     height: 240px; 
-    @media (min-width: 1024px) and (max-width: 1440px) {
+    @media (min-width: 1024px) {
         width: 500px !important;
         height: 400px !important;
     }
@@ -81,6 +81,7 @@ const AvtoWrapper = styled.div`
 const AvtoCard = styled.div`
     display: flex;
     align-items: flex-end;
+    position: relative;
     gap: 5px;
     cursor: pointer;
 `
@@ -91,6 +92,16 @@ const AutoCounter = styled.div`
     @media (min-width: 1024px) and (max-width: 1440px) {
         font-size: 33px;
     }
+`
+
+const Sqr = styled.div<{right: number, top: number, width: number}>`
+    position: absolute; 
+    right: ${props => props.right}%; 
+    top: ${props => props.top}%; 
+    width: ${props => props.width}%; 
+    height: 100%; 
+    background: rgba(256, 256, 256, 0.2);
+    border: 0.3px solid white;
 `
 
 const AvtoAnim = keyframes`
@@ -152,6 +163,9 @@ const AvtoPage = () => {
         const newCars = [...settedCars]
         const newArea = [...area]
         const oldPlacers = [...cars]
+        for(let i = 0; i < cars.length; i++) {
+            if(cars[i].type === car.type && cars[i].counter === 0) return
+        }
         let width = car.type === 'big'? 60 : car.type === 'middle'? 40 : 20
 
         
@@ -177,6 +191,9 @@ const AvtoPage = () => {
         setSettedCars(newCars)
     }
 
+    useEffect(() => {
+        console.log(cars)
+    }, [cars])
 
     useEffect(() => {
         window.addEventListener('touchstart', () => {
@@ -306,7 +323,6 @@ const AvtoPage = () => {
         const cell = document.elementFromPoint(X, Y)?.tagName === 'DIV'? document.elementFromPoint(X, Y) : null
 
 
-        setArea(areaCell)
         if(!pickedAvto.type) return
         
         if(cell?.tagName === 'DIV' && cell.classList.length) {
@@ -317,9 +333,7 @@ const AvtoPage = () => {
             if(last !== `${rowI}${i}`) {
                 setArea(area.map(row => {
                     return row.map(cell => {
-                        if(cell.color === 'picked') {
-                            return cell
-                        }
+                        if(cell.color === 'picked') return cell
                         else return {...cell, color: 'null'}
                     })
                 }))
@@ -378,14 +392,14 @@ const AvtoPage = () => {
             }
         }
 
-        setArea(area.map(row => {
-            return row.map(cell => {
-                if(cell.color === 'picked') {
-                    return cell
-                }
-                else return {...cell, color: 'null'}
-            })
-        }))
+        // setArea(area.map(row => {
+        //     return row.map(cell => {
+        //         if(cell.color === 'picked') {
+        //             return cell
+        //         }
+        //         else return {...cell, color: 'null'}
+        //     })
+        // }))
     }
 
     return (
@@ -396,6 +410,12 @@ const AvtoPage = () => {
                 {cars.map(car => {
                     return <AvtoCard key={car.counter + car.type} onClick={() => PickAvto(car)}>
                         {car.car}
+                        {car.type === 'small' && <Sqr width={80} right={0 + 20} top={0}></Sqr>}
+                        {car.type === 'middle' && <><Sqr width={50} right={0 + 14} top={0}></Sqr>
+                        <Sqr width={50} right={50 + 14} top={0}></Sqr></>}
+                        {car.type === 'big' && <><Sqr width={33} right={0 + 11} top={0}></Sqr>
+                        <Sqr width={33} right={33 + 11} top={0}></Sqr>
+                        <Sqr width={34} right={66 + 11} top={0}></Sqr></>}
                         <AutoCounter>{car.counter}</AutoCounter>
                     </AvtoCard>
                 })}
