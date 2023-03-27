@@ -6,29 +6,21 @@ import { setCurPage } from "../../store/page"
 
 const StyledSvg = styled.svg`
     position: absolute; 
-    @media (max-width: 375px) {
-        left: 105px;
-        bottom: 123px;
+    @media (min-width: 533px) and (max-width: 645px) {
+        left: 110px;
+        bottom: 33px;
     }
-    @media (min-width: 375px) and (max-width: 425px) {
-        left: 123px;
-        bottom: 145px;
-    }
-    @media (min-width: 425px) and (max-width: 768px) {
-        left: 142px;
-        bottom: 165px;
+    @media (min-width: 645px) and (max-width: 768px) {
+        left: 206px;
+        bottom: 66px;
     }
     @media (min-width: 768px) and (max-width: 1024px) {
-        left: 265px;
-        bottom: 300px;
+        left: 285px;
+        bottom: 95px;
     }
     @media (min-width: 1024px) and (max-width: 1440px) {
-        left: 353px;
-        bottom: 398px;
-    }
-    @media (min-width: 1440px) {
-        left: 490px;
-        bottom: 535px;
+        left: 395px;
+        bottom: 125px;
     }
 `
 

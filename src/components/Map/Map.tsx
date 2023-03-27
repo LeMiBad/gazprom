@@ -28,14 +28,11 @@ const RussiaWrapper = styled.div`
 const Russia = styled.img`
     bottom: 0;
     left: 0;
-    @media (max-width: 375px) {
-        width: 320px;
+    @media (min-width: 533px) and (max-width: 645px) {
+        width: 525px;
     }
-    @media (min-width: 375px) and (max-width: 425px) {
-        width: 375px;
-    }
-    @media (min-width: 425px) and (max-width: 768px) {
-        width: 425px;
+    @media (min-width: 645px) and (max-width: 768px) {
+        width: 625px;
     }
     @media (min-width: 768px) and (max-width: 1024px) {
         width: 768px;
