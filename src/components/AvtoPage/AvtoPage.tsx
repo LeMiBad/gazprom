@@ -132,7 +132,7 @@ const AvtoPage = () => {
     const [area, setArea] = useState(areaCell)
     const [last, setLast] = useState('00')
     const [pickedAvto, setPickedAvto] = useState<ICar>({car: <></>, counter: 0, type: null})
-    const [cars, setCars] = useState([{car: <BigAvto/>, counter: 2, type: 'big'}, {car: <MiddleAvto/>, counter: 4, type: 'middle'}, {car: <SmallAvto/>, counter: 5, type: 'small'}])
+    const [cars, setCars] = useState([{car: <BigAvto/>, counter: 2, type: 'big'}, {car: <MiddleAvto/>, counter: 4, type: 'middle'}, {car: <SmallAvto/>, counter: 6, type: 'small'}])
     const [isShake, setIsShake] = useState(false)
     const [settedCars, setSettedCars] = useState<SettedCar[]>([])
     const [isClicked, setIsClicked] = useState(false)

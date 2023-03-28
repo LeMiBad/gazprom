@@ -61,11 +61,12 @@ const ModalName = styled.h1`
     bottom: 3%;
     font-size: 16px;
     color: white;
+    padding-bottom: 18px;
 `
 const ModalDesk = styled.h1`
     position: absolute;
     left: 3%;
-    bottom: 5%;
+    bottom: 30px;
     font-size: 14px;
     color: white;
     width: 80%;

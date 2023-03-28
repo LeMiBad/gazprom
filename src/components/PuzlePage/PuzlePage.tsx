@@ -230,11 +230,12 @@ const PuzlePage = () => {
     const [isWin, setIsWin] = useState(false)
     const [isContinue, setIsContinue] = useState(false)
 
-    useEffect(() => {
+    const clickHandler = () => {
         setTimeout(() => {
             setIsContinue(true)
-        }, 5000)
-    }, [])
+        }, 6000)
+    }
+
 
     const [area, setArea] = useState(
         [
@@ -365,7 +366,7 @@ const PuzlePage = () => {
                 null
             }
             <Wrapper>
-                    <GameWrapper>
+                    <GameWrapper onClick={clickHandler}>
                         {area.map((col, colI) => col.map((item, i) => {
                             return item ? isWin? <ImgAbs onClick={() => handler(colI, i)} key={item.img} src={item.img} alt={'fw'} left={item.left} top={item.top}></ImgAbs>
                                 :

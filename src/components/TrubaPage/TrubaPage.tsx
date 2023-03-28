@@ -300,6 +300,10 @@ const TrubaPage = () => {
         }
         if(![360, 0].includes(val(newArr[16].rotate))) {
             isNowWin = false
+            isThirdWin = false
+        }
+        if(![360, 0].includes(val(newArr[16].rotate))) {
+            isNowWin = false
         }
         
 

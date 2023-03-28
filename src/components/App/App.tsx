@@ -62,7 +62,7 @@ export const App = () => {
             {charModal? <CharModal/> : null}
             {isVertical? <BadResolutionPage></BadResolutionPage> 
             : 
-            <Map/>}
+            Pages[curPage]}
         </>
     )
 }

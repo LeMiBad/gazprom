@@ -12,6 +12,11 @@ import modal2 from './modal2.png'
 import modal3 from './modal3.png'
 import PolzunokModal from "./PolzunokModal"
 
+function formatNumber(numberString: string): string {
+    const number = parseInt(numberString);
+    const formattedNumber = number.toLocaleString().replace(/,/g, " ");
+    return formattedNumber;
+}
 
 const Wrapper = styled.div`
     margin: 0 auto;
@@ -142,7 +147,7 @@ const PolzunokPage = () => {
                 <div style={{ position: 'absolute', background: 'linear-gradient(180deg, #15B8AD -9.43%, rgba(21, 112, 184, 0.49) 41.3%, rgba(7, 29, 47, 0.7) 100%)', width: '100%', height: '100vh', zIndex: -1 }}></div>
                 <Wrapper>
                     <Ask>{asks[curAsk].text}</Ask>
-                    <div style={{color: 'white', fontWeight: 600, fontSize: 22}}>{rangeValue}</div>
+                    <div style={{color: 'white', fontWeight: 600, fontSize: 22}}>{formatNumber(rangeValue)}</div>
                     <RangeWrapper>
                         <RangeInput value={rangeValue} onChange={(e) => {setRangeValue(e.currentTarget.value)}} type="range" min={`${asks[curAsk].min}`} max={`${asks[curAsk].max}`} step={`${asks[curAsk].step}`}></RangeInput>
                         <MinMaxRange right={false} style={{position: 'absolute', left: 0, bottom: '-20px'}}>{asks[curAsk].min}</MinMaxRange>

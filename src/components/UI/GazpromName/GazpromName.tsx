@@ -24,10 +24,7 @@ const StyledGazpromName = styled.h1`
     padding: 0 10px 0 40px;
     height: 43px;
     @media (max-width: 768px) {
-        font-size: 22px;
-    }
-    @media (max-height: 320px) {
-        font-size: 20px;
+        font-size: 17px;
     }
     display: flex;
     justify-content: center;
