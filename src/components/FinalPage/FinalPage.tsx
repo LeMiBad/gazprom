@@ -76,6 +76,9 @@ const Input = styled.input`
     font-weight: 600;
     backdrop-filter: blur(6px);
     background-color: rgba(190, 228, 250, 0.3);
+    ::placeholder {
+        color: #ffffff91;
+    }
 `
 
 const CheckWrapper = styled.div`
@@ -139,7 +142,7 @@ const FinalPage = () => {
                             <p>Я согласен на обработку персональных данных и получение информационных сообщений</p>
                         </CheckWrapper>
                         <InpiutWrapper>
-                            <Input value={phone} onChange={(e) => isPicked? handleChange(e) : () => {}} type={'tel'}></Input>
+                            <Input placeholder="+7(ХХХ)XХ–ХХ" value={phone} onChange={(e) => isPicked? handleChange(e) : () => {}} type={'tel'}></Input>
                             <div style={{position: 'absolute', right: '1%', bottom: -40}}>
                                 {isPicked? <GreenButton func={() => {}}>Отправить</GreenButton> : <GreenButton inActive func={() => {}}>Отправить</GreenButton>}
                             </div>
