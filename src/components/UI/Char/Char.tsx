@@ -6,6 +6,7 @@ const StyledChar = styled.h1`
     background-color: #ffffff2d;
     border: 0.3px solid #FFFFFF;
     color: white;
+    font-size: 22px;
 `
 
 

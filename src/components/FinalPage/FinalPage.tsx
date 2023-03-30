@@ -1,8 +1,10 @@
+import { useState } from "react"
 import styled from "styled-components"
 import Char from "../UI/Char/Char"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import GreenButton from "../UI/GreenButton/GreenButton"
 import back from "./back.png"
+import Check from "./check"
 
 const StyledStartPage = styled.div`
     position: relative;
@@ -61,7 +63,7 @@ const Side = styled.div`
 
 const InpiutWrapper = styled.div`
     position: relative;
-    height: 35px;
+    height: 30px;
 `
 
 const Input = styled.input`
@@ -76,7 +78,46 @@ const Input = styled.input`
     background-color: rgba(190, 228, 250, 0.3);
 `
 
+const CheckWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    p {
+        font-size: 8px;
+        color: white;
+    }
+`
+
+const CheckInp = styled.div`
+    border: 1px solid;
+    box-sizing: border-box;
+    border-image: linear-gradient(270deg, #1570B8 0%, #15B8AD 100%) 3;
+    outline: none;
+    background: rgba(190, 228, 250, 0.3);
+    min-width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
 const FinalPage = () => {
+    const [isPicked, setIsPicked] = useState(false)
+    const [phone, setPhone] = useState("");
+
+    const pickHandler = () => setIsPicked(isPicked? false : true)
+
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
+        const input = event.target.value.replace(/\D/g, ""); // удаляем все нецифровые символы
+        const match = input.match(/^(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/); // проверяем соответствие формату
+    
+        if (match) {
+          setPhone(`+7(${match[2]})${match[3]}-${match[4]}-${match[5]}`); // форматируем номер телефона
+        } else {
+          setPhone(input); // сохраняем введенные символы без изменений
+        }
+    }
+
     return (
         <GradientBackground gradient="linear-gradient(90deg, #00c3ff 0%, #096d94 46%, rgba(0,31,49,1) 91%)">
             <img style={{position: 'absolute', width: '100%', bottom: 0, height: '100%', zIndex: 0}} alt="fwe" src={back}></img>
@@ -88,13 +129,19 @@ const FinalPage = () => {
                 </Name>
                 <Main>
                     <Side>
-                        <h1 style={{color: 'white', fontSize: 16}}>Ура-ура, все локации пройдены и буквы собраны!</h1>
+                        <h1 style={{color: 'white', fontSize: 14}}>Ура-ура, все локации пройдены и буквы собраны!</h1>
                         <Char chars={['И','Н','Н','О','В','А','Ц','И','И']}></Char>
                         <h1 style={{color: 'white', fontSize: 16, fontWeight: 500}}>Квест пройден — теперь можешь оставить свой номер ниже и участвовать в розыгрыше приза:</h1>
+                        <CheckWrapper>
+                            <CheckInp onClick={pickHandler}>
+                                {isPicked && <Check/>}
+                            </CheckInp>
+                            <p>Я согласен на обработку персональных данных и получение информационных сообщений</p>
+                        </CheckWrapper>
                         <InpiutWrapper>
-                            <Input type={'number'}></Input>
+                            <Input value={phone} onChange={(e) => isPicked? handleChange(e) : () => {}} type={'tel'}></Input>
                             <div style={{position: 'absolute', right: '1%', bottom: -40}}>
-                                <GreenButton func={() => {}}>Отправить</GreenButton>
+                                {isPicked? <GreenButton func={() => {}}>Отправить</GreenButton> : <GreenButton inActive func={() => {}}>Отправить</GreenButton>}
                             </div>
                         </InpiutWrapper>
                     </Side>
