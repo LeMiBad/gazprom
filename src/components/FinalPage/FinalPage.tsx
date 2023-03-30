@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 import Char from "../UI/Char/Char"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
@@ -85,6 +85,7 @@ const CheckWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 5px;
+    margin-top: 10px;
     p {
         font-size: 8px;
         color: white;
@@ -107,6 +108,15 @@ const CheckInp = styled.div`
 const FinalPage = () => {
     const [isPicked, setIsPicked] = useState(false)
     const [phone, setPhone] = useState("");
+    const [isCan, setIsCan] = useState(false)
+
+    useEffect(() => {
+        console.log(isPicked, phone.length)
+        if(isPicked && phone.length === 16) {
+            setIsCan(true)
+        }
+        else setIsCan(false)
+    }, [isPicked, phone])
 
     const pickHandler = () => setIsPicked(isPicked? false : true)
 
@@ -135,16 +145,16 @@ const FinalPage = () => {
                         <h1 style={{color: 'white', fontSize: 14}}>Ура-ура, все локации пройдены и буквы собраны!</h1>
                         <Char chars={['И','Н','Н','О','В','А','Ц','И','И']}></Char>
                         <h1 style={{color: 'white', fontSize: 16, fontWeight: 500}}>Квест пройден — теперь можешь оставить свой номер ниже и участвовать в розыгрыше приза:</h1>
-                        <CheckWrapper>
-                            <CheckInp onClick={pickHandler}>
-                                {isPicked && <Check/>}
-                            </CheckInp>
-                            <p>Я согласен на обработку персональных данных и получение информационных сообщений</p>
-                        </CheckWrapper>
                         <InpiutWrapper>
                             <Input placeholder="+7(ХХХ)XХ–ХХ" value={phone} onChange={(e) => isPicked? handleChange(e) : () => {}} type={'tel'}></Input>
-                            <div style={{position: 'absolute', right: '1%', bottom: -40}}>
-                                {isPicked? <GreenButton func={() => {}}>Отправить</GreenButton> : <GreenButton inActive func={() => {}}>Отправить</GreenButton>}
+                            <CheckWrapper>
+                                <CheckInp onClick={pickHandler}>
+                                    {isPicked && <Check/>}
+                                </CheckInp>
+                                <p>Я согласен на обработку персональных данных и получение информационных сообщений</p>
+                            </CheckWrapper>
+                            <div style={{position: 'absolute', right: '0%', bottom: -90}}>
+                                {isCan? <GreenButton func={() => {}}>Отправить</GreenButton> : <GreenButton inActive func={() => {}}>Отправить</GreenButton>}
                             </div>
                         </InpiutWrapper>
                     </Side>
