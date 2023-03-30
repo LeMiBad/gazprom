@@ -104,7 +104,7 @@ const AskPage = () => {
                 const result = [...answers]
                 result[cur] = index
                 setAskAnswers(result)
-                setCurPage(10)
+                setCurPage(3)
                 return
             }
             else {

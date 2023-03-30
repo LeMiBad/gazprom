@@ -14,6 +14,7 @@ import { useEffect } from "react"
 import { useStore } from "effector-react"
 import { $competedObject } from './../../store/askAnswers'
 import { setCurPage } from "../../store/page"
+import { $lol, lolturn } from "../../store/lol"
 
 
 const RussiaWrapper = styled.div`
@@ -54,17 +55,46 @@ const MarkWrapper = styled.div`
 
 const Map = () => {
     const completed = useStore($competedObject)
+    const lol = useStore($lol)
+
 
     useEffect(() => {
         let isCan = true
+        let counter = 7
 
-        if(completed.b === false) isCan = false
-        if(completed.z === false) isCan = false
-        if(completed.ch === false) isCan = false
-        if(completed.h === false) isCan = false
-        if(completed.k === false) isCan = false
-        if(completed.u === false) isCan = false
-        if(completed.o === false) isCan = false
+        if(completed.b === false) {
+            isCan = false
+            counter-=1
+        }
+        if(completed.z === false) {
+            isCan = false
+            counter-=1
+        }
+        if(completed.ch === false) {
+            isCan = false
+            counter -=1 
+        }
+        if(completed.h === false) {
+            isCan = false
+            counter -= 1
+        }
+        if(completed.k === false) {
+            isCan = false
+            counter -= 1
+        }
+        if(completed.u === false) {
+            isCan = false
+            counter -= 1
+        }
+        if(completed.o === false) {
+            isCan = false
+            counter -= 1
+        }
+        
+        if(counter === 1 && !lol) {
+            setCurPage(10)
+            lolturn()
+        }
 
         if(isCan) {
             setCurPage(9)
