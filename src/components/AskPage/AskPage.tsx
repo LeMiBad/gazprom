@@ -2,7 +2,6 @@ import { useState } from "react"
 import styled from "styled-components"
 import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
-import GreenButton from "../UI/GreenButton/GreenButton"
 import ask from './ask.png'
 import zeter from './../../img/zeter.png'
 import shest from './../../img/shest.png'

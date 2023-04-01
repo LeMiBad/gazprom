@@ -1,10 +1,8 @@
 import { useStore } from 'effector-react'
 import { $pickedObject } from '../../../store/askAnswers'
-import GameRule from '../../GameRule/GameRule'
 import GazpromName from '../../UI/GazpromName/GazpromName'
 import GradientBackground from '../../UI/GradientBackground/GradientBackground'
 import WrapperForObject from '../WrapperForObject/WrapperForObject'
-import background from './img/circles.png'
 
 
 
