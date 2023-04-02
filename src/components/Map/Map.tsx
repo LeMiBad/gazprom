@@ -42,7 +42,7 @@ const Russia = styled.img`
         width: 1024px;
     }
     @media (min-width: 1440px) {
-        width: 1440px;
+        width: 1024px;
     }
 `
     

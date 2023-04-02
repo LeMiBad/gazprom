@@ -18,7 +18,7 @@ const StyledSvg = styled.svg`
         left: 502px;
         bottom: 30px;
     }
-    @media (min-width: 1024px) and (max-width: 1440px) {
+    @media (min-width: 1024px) {
         left: 673px;
         bottom: 43px;
     }

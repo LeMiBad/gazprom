@@ -145,7 +145,8 @@ const AvtoPage = () => {
                 return item
             })
         }))
-        setCars([{car: <BigAvto/>, counter: 2, type: 'big'}, {car: <MiddleAvto/>, counter: 4, type: 'middle'}, {car: <SmallAvto/>, counter: 4, type: 'small'}])
+        setIsWin(false)
+        setCars([{car: <BigAvto/>, counter: 2, type: 'big'}, {car: <MiddleAvto/>, counter: 4, type: 'middle'}, {car: <SmallAvto/>, counter: 6, type: 'small'}])
         setSettedCars([])
     }
 
