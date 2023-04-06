@@ -1,0 +1,1 @@
+declare const ym: (counterId: number, method: string, ...args: any[]) => void;
