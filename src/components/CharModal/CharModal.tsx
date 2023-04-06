@@ -102,7 +102,9 @@ const CharModal: FC<IObjectModal> = ({close, data}) => {
     const clickHandler = () => {
         let c = 1
 
+
         for(let key in fr) {
+            //@ts-ignore
             if (fr[key]) c+=1
         }
 
