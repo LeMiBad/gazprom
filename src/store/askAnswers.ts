@@ -21,6 +21,13 @@ import chBack from './../components/PickObject/img/chBack.png'
 import hBack from './../components/PickObject/img/hBack.png'
 import kBack from './../components/PickObject/img/kBack.png'
 import oBack from './../components/PickObject/img/oBack.png'
+import zBackHigh from './../components/PickObject/img/zBackHigh.png'
+import uBackHigh from './../components/PickObject/img/uBackHigh.png'
+import bBackHigh from './../components/PickObject/img/bBackHigh.png'
+import chBackHigh from './../components/PickObject/img/chBackHigh.png'
+import hBackHigh from './../components/PickObject/img/hBackHigh.png'
+import kBackHigh from './../components/PickObject/img/kBackHigh.png'
+import oBackHigh from './../components/PickObject/img/oBackHigh.png'
 
 import backObjFigureH from './../components/Objects/ObjectPage/img/circles.png'
 import backObjFigureU from './../components/Objects/ObjectPage/img/backObjFigurU.png'
@@ -29,6 +36,13 @@ import backObjFigureCH from './../components/Objects/ObjectPage/img/backObjFigur
 import backObjFigureB from './../components/Objects/ObjectPage/img/backObjFigureB.png'
 import backObjFigureZ from './../components/Objects/ObjectPage/img/backObjFigureZ.png'
 import backObjFigureK from './../components/Objects/ObjectPage/img/backObjFigureK.png'
+import backObjFigureHHigh from './../components/Objects/ObjectPage/img/circles.png'
+import backObjFigureUHigh from './../components/Objects/ObjectPage/img/backObjFigureUHigh.png'
+import backObjFigureOHigh from './../components/Objects/ObjectPage/img/backObjFigureOHigh.png'
+import backObjFigureCHHigh from './../components/Objects/ObjectPage/img/backObjFigureCHHigh.png'
+import backObjFigureBHigh from './../components/Objects/ObjectPage/img/backObjFigureBHigh.png'
+import backObjFigureZHigh from './../components/Objects/ObjectPage/img/backObjFigureZHigh.png'
+import backObjFigureKHigh from './../components/Objects/ObjectPage/img/backObjFigureKHigh.png'
 
 
 import askH from './../components/GameRule/askH.png'
@@ -168,12 +182,12 @@ const objects = {
         index: 'z',
         image: z,
         smallImage: zSmall,
-        backImage: zBack,
+        backImage: window.innerWidth < 1024? zBack : zBackHigh,
         desk: 'С 1966 года месторождение оставалось крупнейшим в мире по начальным запасам газа (10,9 трлн кубометров). Также оно является мировым рекордсменом по объемам добычи — в 2019 году была достигнута отметка 7 трлн кубометров!',
         object: {
             textOne: 'Самое мощное по добыче газа месторождение в России. При его освоении использовались прогрессивные технические решения и передовое оборудование с высоким ресурсом надежности, рассчитанное на эксплуатацию в тяжелых природно-климатических условиях. Как и на многих объектах, работы здесь идут без выпуска природного газа в атмосферу благодаря использованию средств телемеханики и телеметрии!',
             textTwo: '',
-            figure: backObjFigureZ
+            figure: window.innerWidth < 1024? backObjFigureZ : backObjFigureZHigh
         },
         char: ['А'],
         askPage: null
@@ -183,12 +197,12 @@ const objects = {
         index: 'u',
         image: u,
         smallImage: uSmall,
-        backImage: uBack,
+        backImage: window.innerWidth < 1024? uBack : uBackHigh,
         desk: 'С 1966 года месторождение оставалось крупнейшим в мире по начальным запасам газа (10,9 трлн кубометров). ',
         object: {
             textOne: 'С 1966 года месторождение оставалось крупнейшим в мире по начальным запасам газа (10,9 трлн кубометров). Также оно является мировым рекордсменом по объемам добычи — в 2019 году была достигнута отметка 7 трлн кубометров! Новый Уренгой благодаря НГКМ вырос до полноценного города и сейчас носит титул газовой столицы России.',
             textTwo: 'На объект привезли новую спецтехнику! Проконтролируй, чтобы её компактно расположили на территории.',
-            figure: backObjFigureU
+            figure: window.innerWidth < 1024? backObjFigureU : backObjFigureUHigh
         },
         askPage: {
             text: 'Объекты занимают от 1 до 3 клеток на поле. Найди им место: выбирай машину и кликай по свободным ячейкам. Расположи спецтехнику так, чтобы поместились все объекты без пустых участков.',
@@ -201,12 +215,12 @@ const objects = {
         index: 'b',
         image: b,
         smallImage: bSmall,
-        backImage: bBack,
+        backImage: window.innerWidth < 1024? bBack : bBackHigh,
         desk: 'С 1966 года месторождение оставалось крупнейшим в мире по начальным запасам газа (10,9 трлн кубометров). Также оно является мировым рекордсменом по объемам добычи — в 2019 году была достигнута отметка 7 трлн кубометров!',
         object: {
             textOne: 'Это ядро мегапроекта «Ямал», которое служит ресурсной базой для поставок в северо-западные и центральные регионы России, а также на экспорт в Европу. Добыча здесь будет вестись более 100 лет!  На месторождении есть аэропорт Бованенково и проложенная сюда от станции Обская железная дорога с уникальным мостом через реку Юрибей — самым длинным в мире из расположенных в Заполярье (3,9 км).',
             textTwo: '',
-            figure: backObjFigureB
+            figure: window.innerWidth < 1024? backObjFigureB : backObjFigureBHigh
         },
         char: ['В'],
         askPage: null
@@ -216,12 +230,12 @@ const objects = {
         index: 'ch',
         image: ch,
         smallImage: chSmall,
-        backImage: chBack,
+        backImage: window.innerWidth < 1024? chBack : chBackHigh,
         desk: 'С 1966 года месторождение оставалось крупнейшим в мире по начальным запасам газа (10,9 трлн кубометров). Также оно является мировым рекордсменом по объемам добычи — в 2019 году была достигнута отметка 7 трлн кубометров!',
         object: {
             textOne: 'Основа Якутского центра газодобычи и ресурсная база для трубопровода «Сила Сибири». Это месторождение — одно из крупнейших в восточной части страны и относится к категории уникальных. Сейчас под руководством «Газстройпрома» ведётся расширение мощностей, чтобы выйти на новые высоты.',
             textTwo: 'Узнай, как выглядит объект на рассвете!',
-            figure: backObjFigureCH
+            figure: window.innerWidth < 1024? backObjFigureCH : backObjFigureCHHigh
         },
         askPage: {
             text: 'Нажимай на участки труб, чтобы крутить их по часовой стрелке. Собери газопровод так, чтобы он соединял Пункт А с Пунктом Б.',
@@ -234,12 +248,12 @@ const objects = {
         index: 'h',
         image: h,
         smallImage: hSmall,
-        backImage: hBack,
+        backImage: window.innerWidth < 1024? hBack : hBackHigh,
         desk: 'С 1966 года месторождение оставалось крупнейшим в мире по начальным запасам газа (10,9 трлн кубометров). Также оно является мировым рекордсменом по объемам добычи — в 2019 году была достигнута отметка 7 трлн кубометров!',
         object: {
             textOne: 'По размеру запасов газа относится к категории уникальных — 2 трлн м³! Находится преимущественно на суше полуострова и даже частично выходит на шельф Карского моря. А в 2023 году на месторождении планируется построить установку комплексной подготовки газа, дожимную компрессорную станцию, кусты газовых скважин, энергоцентр и другую инфраструктуру.',
             textTwo: 'В общем, технологии и инновации бьют ключом! Узнай ещё больше интересных цифр про Газстройпром в викторине',
-            figure: backObjFigureH
+            figure: window.innerWidth < 1024? backObjFigureH : backObjFigureHHigh
         },
         askPage: {
             text: 'Читай вопросы и доверься интуиции: располагай ползунок там, где, тебе кажется, кроется верный ответ!',
@@ -252,12 +266,12 @@ const objects = {
         index: 'k',
         image: k,
         smallImage: kSmall,
-        backImage: kBack,
+        backImage: window.innerWidth < 1024? kBack : kBackHigh,
         desk: 'С 1966 года месторождение оставалось крупнейшим в мире по начальным запасам газа (10,9 трлн кубометров). Также оно является мировым рекордсменом по объемам добычи — в 2019 году была достигнута отметка 7 трлн кубометров!',
         object: {
             textOne: 'Газоконденсатное месторождение является крупнейшим на Востоке России и относится к категории уникальных: его запасы составляют 1,8 трлн м³ газа и 65,7 млн тонн газового конденсата. Месторождение имеет сложное геологическое строение, поэтому для его разработки применяются передовые высокоэффективные технологии. Кстати, здешний газ имеет интересную особенность: в нём содержится много гелия.',
             textTwo: '',
-            figure: backObjFigureK
+            figure: window.innerWidth < 1024? backObjFigureK : backObjFigureKHigh
         },
         char: ['Ц'],
         askPage: null
@@ -267,12 +281,12 @@ const objects = {
         index: 'o',
         image: o,
         smallImage: oSmall,
-        backImage: oBack,
+        backImage: window.innerWidth < 1024? oBack : oBackHigh,
         desk: 'С 1966 года месторождение оставалось крупнейшим в мире по начальным запасам газа (10,9 трлн кубометров). Также оно является мировым рекордсменом по объемам добычи — в 2019 году была достигнута отметка 7 трлн кубометров!',
         object: {
             textOne: 'Предприятие активно ведёт социальные проекты. Например, обеспечило городу комфортную площадку для обучения и творчества: библиотеки, театральные классы и другие улучшения инфраструктуры города и жизни людей!',
             textTwo: 'Узнай, как выглядит объект на рассвете!',
-            figure: backObjFigureO
+            figure: window.innerWidth < 1024? backObjFigureO : backObjFigureOHigh
         },
         askPage: {
             text: 'Тапай на кусочки, чтобы двигать их рядом на пустую ячейку. Твоя задача — собрать цифры от 1 до 15 в правильном порядке',
@@ -343,6 +357,5 @@ export const $competedObject = createStore(initialCompeted)
     .on(completeObject, (cur, index) => {
         const newObj = {...cur}
         newObj[index] = true
-        console.log(newObj)
         return newObj
     })

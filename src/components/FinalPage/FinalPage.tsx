@@ -105,13 +105,21 @@ const CheckInp = styled.div`
     align-items: center;
 `
 
+const ButtonWrapper = styled.div`
+    position: absolute; 
+    right: 0%; 
+    bottom: -90px;
+    @media (min-width: 1024px) {
+        bottom: -120px;
+    }
+`
+
 const FinalPage = () => {
     const [isPicked, setIsPicked] = useState(false)
     const [phone, setPhone] = useState("");
     const [isCan, setIsCan] = useState(false)
 
     useEffect(() => {
-        console.log(isPicked, phone.length)
         if(isPicked && phone.length === 16) {
             setIsCan(true)
         }
@@ -153,14 +161,14 @@ const FinalPage = () => {
                                 </CheckInp>
                                 <p>Я согласен на обработку персональных данных и получение информационных сообщений</p>
                             </CheckWrapper>
-                            <div style={{position: 'absolute', right: '0%', bottom: -90}}>
-                                {isCan? <GreenButton func={() => {}}>Отправить</GreenButton> : <GreenButton inActive func={() => {}}>Отправить</GreenButton>}
-                            </div>
+                            <ButtonWrapper>
+                                {isCan? <GreenButton func={() => {ym(93030012,'reachGoal','phone')}}>Отправить</GreenButton> : <GreenButton inActive func={() => {}}>Отправить</GreenButton>}
+                            </ButtonWrapper>
                         </InpiutWrapper>
                     </Side>
                     <Side>
                         <h1 style={{color: 'white', fontSize: 16, fontWeight: 600}}>Мы внедряем современные и технологичные инструменты во все сферы работы. Что если именно ты станешь участником нового инновационного проекта?</h1>
-                        <GreenButton width={70} func={() => {}}>К вакансиям</GreenButton>
+                        <GreenButton width={70} func={() => {ym(93030012,'reachGoal','final-link')}}>К вакансиям</GreenButton>
                     </Side>
                 </Main>
             </StyledStartPage>

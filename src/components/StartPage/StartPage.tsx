@@ -3,6 +3,7 @@ import { setCurPage } from "../../store/page"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import GreenButton from "../UI/GreenButton/GreenButton"
 import back from './../../img/union.png'
+import backHigh from './../../img/unionHigh.png'
 
 const StyledStartPage = styled.div`
     position: relative;
@@ -72,13 +73,21 @@ const Footer = styled.div`
 `
 
 
-export const StartPage = () => {
+const ButtonWrapper = styled.div`
+    button {
+        width: 160px;
+    }
+`
 
+
+export const StartPage = () => {
     const buttonHandler = () => setCurPage(1)
+
+
 
     return (
         <GradientBackground gradient="linear-gradient(90deg, #00c3ff 0%, #096d94 46%, rgba(0,31,49,1) 91%)">
-            <img style={{position: 'absolute', width: '100%', bottom: 0, height: '75%', zIndex: 0}} alt="fwe" src={back}></img>
+            <img style={{position: 'absolute', width: '100%', bottom: 0, height: '75%', zIndex: 0}} alt="fwe" src={window.innerWidth < 1024? back : backHigh}></img>
             <StyledStartPage>
                 <Name>
                     <div></div>
@@ -91,7 +100,9 @@ export const StartPage = () => {
                         <MainText>Газстройпром богат на точки с месторождениями газа и нефти. Речь здесь не только о важных для страны объектах, но и о живописных ландшафтах и перспективных местах для работы.</MainText>
                         <p>Проходи мини-тест — узнай, какие объекты созданы специально для тебя! А после тебя ждёт полное погружение в завораживающие процессы на этих точках месторождений.</p>
                     </div>
-                    <GreenButton func={buttonHandler}>Полный вперёд</GreenButton>
+                    <ButtonWrapper onClick={() => {ym(93030012,'reachGoal','start')}}>
+                        <GreenButton func={buttonHandler}>Полный вперёд</GreenButton>
+                    </ButtonWrapper>
                 </Footer>
             </StyledStartPage>
         </GradientBackground>

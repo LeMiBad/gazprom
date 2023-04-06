@@ -3,6 +3,7 @@ import styled from "styled-components"
 import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import ask from './ask.png'
+import askHigh from './askHigh.png'
 import zeter from './../../img/zeter.png'
 import shest from './../../img/shest.png'
 import polukrug from './../../img/polukrug.png'
@@ -90,15 +91,14 @@ const AskPage = () => {
     const pickHandler = (index: number) => {
         setPickAnswer(index)
 
-
-
+        
         setTimeout(() => {
             setAnswers(() => {
                 const result = [...answers]
                 result[cur] = index
                 return result
             })
-    
+            
             if(cur === 2) {
                 const result = [...answers]
                 result[cur] = index
@@ -111,10 +111,12 @@ const AskPage = () => {
                 setCur(cur+1)
             }
         }, 300)
+        
+        ym(93030012,'reachGoal','test')
     }
-
+    
     return (
-        <GradientBackground gradient={`url('${ask}')`}>
+        <GradientBackground gradient={`url('${window.innerWidth < 1024? ask : askHigh}')`}>
             <GazpromName/>
             <div style={{position: 'absolute', background: 'linear-gradient(225deg, #1bdbce -10.52%, rgba(21, 112, 184, 0) 100%)', width: '100%', height: '100vh', zIndex: -1}}></div>
             <Wrapper>

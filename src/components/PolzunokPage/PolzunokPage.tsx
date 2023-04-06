@@ -133,7 +133,6 @@ const PolzunokPage = () => {
         setModal(true)
     }
 
-    console.log(+`20 000`.split(' ').join(''))
 
 
     return (

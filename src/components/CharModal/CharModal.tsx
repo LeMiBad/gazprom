@@ -1,9 +1,8 @@
 import { useStore } from "effector-react"
 import { FC, useEffect, useState } from "react"
 import styled from "styled-components"
-import { $pickedObject, completeObject } from "../../store/askAnswers"
+import { $competedObject, $pickedObject, completeObject } from "../../store/askAnswers"
 import { setCurPage } from "../../store/page"
-import Cross from "../UI/Cross/Cross"
 import GreenButton from "../UI/GreenButton/GreenButton"
 import bBack from './bBack.png'
 import chBack from './chBack.png'
@@ -98,11 +97,30 @@ interface IObjectModal {
 const CharModal: FC<IObjectModal> = ({close, data}) => {
     const currentObj = useStore($pickedObject)
     const [img, setImg] = useState(bBack)
+    const fr = useStore($competedObject)
 
     const clickHandler = () => {
+        let c = 1
+
+        for(let key in fr) {
+            if (fr[key]) c+=1
+        }
+
+
+
         completeObject(currentObj.index)
         setCharModal()
         setCurPage(3)
+
+
+        if(c === 1) ym(93030012,'reachGoal','1st-letter')
+        if(c === 2) ym(93030012,'reachGoal','2nd-letter')
+        if(c === 3) ym(93030012,'reachGoal','3st-letter')
+        if(c === 4) ym(93030012,'reachGoal','4st-letter')
+        if(c === 5) ym(93030012,'reachGoal','5st-letter')
+        if(c === 6) ym(93030012,'reachGoal','6st-letter')
+        if(c === 7) ym(93030012,'reachGoal','7st-letter')
+
     }
 
     useEffect(() => {

@@ -6,6 +6,7 @@ import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import GreenButton from "../UI/GreenButton/GreenButton"
 import full from './full.png'
+import backHigh from './backHigh.png'
 import back from './back.png'
 import sqr1 from './sqr1.png'
 import sqr2 from './sqr2.png'
@@ -244,25 +245,25 @@ const PuzlePage = () => {
                     img: sqr1,
                     left: 0,
                     top: 0,
-                    id: 12
+                    id: 9
                 },
                 {
                     img: sqr2,
                     left: 25,
                     top: 0,
-                    id: 2
+                    id: 15
                 },
                 {
                     img: sqr3,
                     left: 50,
                     top: 0,
-                    id: 3
+                    id: 8
                 },
                 {
                     img: sqr4,
                     left: 75,
                     top: 0,
-                    id: 9
+                    id: 3
                 },
             ],
             [
@@ -270,25 +271,25 @@ const PuzlePage = () => {
                     img: sqr5,
                     left: 0,
                     top: 25,
-                    id: 15
+                    id: 1
                 },
                 {
                     img: sqr6,
                     left: 25,
                     top: 25,
-                    id: 6
+                    id: 4
                 },
                 {
                     img: sqr7,
                     left: 50,
                     top: 25,
-                    id: 8
+                    id: 13
                 },
                 {
                     img: sqr8,
                     left: 75,
                     top: 25,
-                    id: 5
+                    id: 14
                 },
             ],
             [
@@ -296,25 +297,25 @@ const PuzlePage = () => {
                     img: sqr9,
                     left: 0,
                     top: 50,
-                    id: 10
+                    id: 7
                 },
                 {
                     img: sqr10,
                     left: 25,
                     top: 50,
-                    id: 11
+                    id: 12
                 },
                 {
                     img: sqr11,
                     left: 50,
                     top: 50,
-                    id: 1
+                    id: 6
                 },
                 {
                     img: sqr12,
                     left: 75,
                     top: 50,
-                    id: 4
+                    id: 5
                 },
             ],
             [
@@ -322,19 +323,19 @@ const PuzlePage = () => {
                     img: sqr13,
                     left: 0,
                     top: 75,
-                    id: 13
+                    id: 11
                 },
                 {
                     img: sqr14,
                     left: 25,
                     top: 75,
-                    id: 7
+                    id: 2
                 },
                 {
                     img: sqr15,
                     left: 50,
                     top: 75,
-                    id: 14
+                    id: 10
                 },
                 null
             ],

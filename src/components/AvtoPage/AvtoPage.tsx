@@ -6,6 +6,7 @@ import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import GreenButton from "../UI/GreenButton/GreenButton"
 import back from './back.png'
+import backHigh from './backHigh.png'
 import {areaCell} from './area'
 import BigAvto from "./BigAvto"
 import MiddleAvto from "./MiddleAvto"
@@ -191,10 +192,6 @@ const AvtoPage = () => {
         setArea(newArea)
         setSettedCars(newCars)
     }
-
-    useEffect(() => {
-        console.log(cars)
-    }, [cars])
 
     useEffect(() => {
         window.addEventListener('touchstart', () => {
@@ -404,7 +401,7 @@ const AvtoPage = () => {
     }
 
     return (
-        <GradientBackground gradient={`url('${back}')`}>
+        <GradientBackground gradient={`url('${window.innerWidth < 1024? back : backHigh}')`}>
             <GameRule />
             <GazpromName textOne="Уренгойское НГКМ" />
             <AvtoWrapper>

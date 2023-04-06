@@ -5,6 +5,7 @@ import { $askAnswers, pickObject } from "../../store/askAnswers"
 import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import background from './img/background.png'
+import backgroundHigh from './img/backgroundHigh.png'
 import ObjectModal from "./ObjectModal"
 
 
@@ -78,7 +79,7 @@ const PickObject = () => {
 
 
     return (
-        <GradientBackground gradient={`url('${background}')`}>
+        <GradientBackground gradient={`url('${window.innerWidth < 1024? background : backgroundHigh}')`}>
             {
                 isVisible? <>
                     <ObjectModal data={curAnswer} close={modalHandler}/>

@@ -93,7 +93,7 @@ export const NextPage = () => {
                 </div>
                 
                 <Footer>
-                    <GreenButton func={() => setCurPage(9)}>К вакансиям</GreenButton>
+                    <GreenButton func={() => {setCurPage(9); ym(93030012,'reachGoal','mid-link')}}>К вакансиям</GreenButton>
                     <GreenButton func={() => setCurPage(3)}>Продолжить игру</GreenButton>
                 </Footer>
             </StyledStartPage>
