@@ -30,7 +30,7 @@ import { setCharModal } from "../../store/CharModal"
 const winPosition = [
     [
         {
-            img: sqr12,
+            img: sqr1,
             left: 0,
             top: 0,
             id: 1
@@ -48,7 +48,7 @@ const winPosition = [
             id: 3
         },
         {
-            img: sqr9,
+            img: sqr4,
             left: 75,
             top: 0,
             id: 4
@@ -56,7 +56,7 @@ const winPosition = [
     ],
     [
         {
-            img: sqr15,
+            img: sqr5,
             left: 0,
             top: 25,
             id: 5
@@ -68,13 +68,13 @@ const winPosition = [
             id: 6
         },
         {
-            img: sqr8,
+            img: sqr7,
             left: 50,
             top: 25,
             id: 7
         },
         {
-            img: sqr5,
+            img: sqr8,
             left: 75,
             top: 25,
             id: 8
@@ -82,25 +82,25 @@ const winPosition = [
     ],
     [
         {
-            img: sqr10,
+            img: sqr9,
             left: 0,
             top: 50,
             id: 9
         },
         {
-            img: sqr11,
+            img: sqr10,
             left: 25,
             top: 50,
             id: 10
         },
         {
-            img: sqr1,
+            img: sqr11,
             left: 50,
             top: 50,
             id: 11
         },
         {
-            img: sqr4,
+            img: sqr12,
             left: 75,
             top: 50,
             id: 12
@@ -114,13 +114,13 @@ const winPosition = [
             id: 13
         },
         {
-            img: sqr7,
+            img: sqr14,
             left: 25,
             top: 75,
             id: 14
         },
         {
-            img: sqr14,
+            img: sqr15,
             left: 50,
             top: 75,
             id: 15
@@ -224,8 +224,8 @@ const Card = styled.div<{ top?: number, left?: number }>`
     font-weight: 600;
 `
 
-// 12 2 3 9 15 6 8 5 10 11 1 4 13 7 14 
-const needed = [sqr12, sqr2, sqr3, sqr9, sqr15, sqr6, sqr8, sqr5, sqr10, sqr11, sqr1, sqr4, sqr13, sqr7, sqr14, null]
+
+const needed = [sqr1, sqr2, sqr3, sqr4, sqr5, sqr6, sqr7, sqr8, sqr9, sqr10, sqr11, sqr12, sqr13, sqr14, sqr15, null]
 
 const PuzlePage = () => {
     const [isWin, setIsWin] = useState(false)
@@ -237,30 +237,31 @@ const PuzlePage = () => {
         }, 6000)
     }
 
-
+    
+    
     const [area, setArea] = useState(
         [
             [
                 {
-                    img: sqr1,
+                    img: sqr9,
                     left: 0,
                     top: 0,
                     id: 9
                 },
                 {
-                    img: sqr2,
+                    img: sqr15,
                     left: 25,
                     top: 0,
                     id: 15
                 },
                 {
-                    img: sqr3,
+                    img: sqr8,
                     left: 50,
                     top: 0,
                     id: 8
                 },
                 {
-                    img: sqr4,
+                    img: sqr3,
                     left: 75,
                     top: 0,
                     id: 3
@@ -268,25 +269,25 @@ const PuzlePage = () => {
             ],
             [
                 {
-                    img: sqr5,
+                    img: sqr1,
                     left: 0,
                     top: 25,
                     id: 1
                 },
                 {
-                    img: sqr6,
+                    img: sqr4,
                     left: 25,
                     top: 25,
                     id: 4
                 },
                 {
-                    img: sqr7,
+                    img: sqr13,
                     left: 50,
                     top: 25,
                     id: 13
                 },
                 {
-                    img: sqr8,
+                    img: sqr14,
                     left: 75,
                     top: 25,
                     id: 14
@@ -294,25 +295,25 @@ const PuzlePage = () => {
             ],
             [
                 {
-                    img: sqr9,
+                    img: sqr7,
                     left: 0,
                     top: 50,
                     id: 7
                 },
                 {
-                    img: sqr10,
+                    img: sqr12,
                     left: 25,
                     top: 50,
                     id: 12
                 },
                 {
-                    img: sqr11,
+                    img: sqr6,
                     left: 50,
                     top: 50,
                     id: 6
                 },
                 {
-                    img: sqr12,
+                    img: sqr5,
                     left: 75,
                     top: 50,
                     id: 5
@@ -320,19 +321,19 @@ const PuzlePage = () => {
             ],
             [
                 {
-                    img: sqr13,
+                    img: sqr11,
                     left: 0,
                     top: 75,
                     id: 11
                 },
                 {
-                    img: sqr14,
+                    img: sqr2,
                     left: 25,
                     top: 75,
                     id: 2
                 },
                 {
-                    img: sqr15,
+                    img: sqr10,
                     left: 50,
                     top: 75,
                     id: 10
@@ -340,15 +341,18 @@ const PuzlePage = () => {
                 null
             ],
         ]
-    )
-
-
-    useEffect(() => {
-        setIsWin(needed.map(item => item? item : 'null').join('') === area.flat(1).map(item => item? item.img : 'null').join(''))
-    }, [area, isWin])
-
-    const handler = (col: number, i: number) => {
-        setArea(setterPosition(swapIfNeeded(col, i, area)))
+        )
+        
+        useEffect(() => {
+            if(area.flat(1).map(item => item? item.id : 'null').join('') === "123456789101112131415null") setIsWin(true)
+        }, [area])
+        
+        useEffect(() => {
+            // setIsWin(needed.map(item => item? item : 'null').join('') === area.flat(1).map(item => item? item.img : 'null').join(''))
+        }, [area, isWin])
+        
+        const handler = (col: number, i: number) => {
+            setArea(setterPosition(swapIfNeeded(col, i, area)))
     }
 
 
@@ -370,9 +374,9 @@ const PuzlePage = () => {
                     <GameWrapper onClick={clickHandler}>
                         {area.map((col, colI) => col.map((item, i) => {
                             return item ? isWin? <ImgAbs onClick={() => handler(colI, i)} key={item.img} src={item.img} alt={'fw'} left={item.left} top={item.top}></ImgAbs>
-                                :
-                                    <Card onClick={() => handler(colI, i)} left={item.left} top={item.top} key={colI + i + item.top + item.left}>{item.id}</Card>
-                                : null
+                            :
+                            <Card onClick={() => handler(colI, i)} left={item.left} top={item.top} key={colI + i + item.top + item.left}>{item.id}</Card>
+                            : null
                         }))}
                         {isWin? <ImgAbs src={last} alt={'fw'} left={75} top={75}></ImgAbs> : null}
                     </GameWrapper>
