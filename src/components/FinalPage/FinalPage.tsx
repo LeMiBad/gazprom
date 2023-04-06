@@ -159,7 +159,7 @@ const FinalPage = () => {
                                 <CheckInp onClick={pickHandler}>
                                     {isPicked && <Check/>}
                                 </CheckInp>
-                                <p>Я согласен на обработку персональных данных и получение информационных сообщений</p>
+                                <p>Я согласен на обработку <a target={"_blank"} href="https://fut.ru/personal_data_policy/" style={{color: "white", textDecoration: 'underline'}}>персональных данных</a> и получение информационных сообщений</p>
                             </CheckWrapper>
                             <ButtonWrapper>
                                 {isCan? <GreenButton func={() => {ym(93030012,'reachGoal','phone')}}>Отправить</GreenButton> : <GreenButton inActive func={() => {}}>Отправить</GreenButton>}
