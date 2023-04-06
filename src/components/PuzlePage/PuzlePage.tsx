@@ -192,7 +192,7 @@ const Wrapper = styled.div`
 const GameWrapper = styled.div`
     width: 270px; 
     height: 270px; 
-    @media (min-width: 1024px) and (max-width: 1440px) {
+    @media (min-width: 1024px) {
         width: 500px !important;
         height: 500px !important;
     }
