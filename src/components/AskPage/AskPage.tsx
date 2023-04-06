@@ -7,6 +7,9 @@ import askHigh from './askHigh.png'
 import zeter from './../../img/zeter.png'
 import shest from './../../img/shest.png'
 import polukrug from './../../img/polukrug.png'
+import zeterHigh from './../../img/zeterHigh.png'
+import shestHigh from './../../img/shestHigh.png'
+import polukrugHigh from './../../img/polukrugHigh.png'
 import { setCurPage } from "../../store/page"
 import { setAskAnswers } from "../../store/askAnswers"
 
@@ -68,17 +71,17 @@ const current = [
     {
         ask: 'Перед тобой выбор: уехать на пару дней в новые края. Что ты предпочтешь?',
         answers: ['пожалуй, выберу что-то ближе к Востоку', 'люблю морозы: Северное сияние и прочие чудеса можно увидеть!', 'мне главное, чтобы рядом была водная гладь'],
-        img: zeter
+        img: window.innerWidth < 1024? zeter : zeterHigh
     },
     {
         ask: 'Кто любит мегаполис, а кто — уютные маленькие города. В каждом городе свой ритм жизни, как и на каждом предприятии свой ритм работы. Какие масштабы тебе по душе?',
         answers: ['лучше что-то более скромное, но уютное и не менее перспективное', 'я за большие масштабы, но в меру', 'вижу себя исключительно на самых прославленных в СМИ предприятиях'],
-        img: shest
+        img: window.innerWidth < 1024?  shest : shestHigh
     },
     {
         ask: 'Тебе выпала возможность быть поставщиком ценного и популярного товара. Какую тактику ты выберешь?',
         answers: ['буду поставлять только по внутренним каналам, никакого экспорта за границу!', 'выберу тактику «и нашим, и вашим» и буду поставлять как внутри страны, так и зарубеж'],
-        img: polukrug
+        img: window.innerWidth < 1024? polukrug : polukrugHigh
     },
 ]
 
