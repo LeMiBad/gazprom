@@ -75,7 +75,7 @@ const Footer = styled.div`
 
 const ButtonWrapper = styled.div`
     button {
-        width: 210px;
+        width: 220px !important;
     }
 `
 
