@@ -6,9 +6,10 @@ interface ButtonProps {
     children: string
     inActive?: boolean
     width?: number
+    big?: boolean
 }
 
-const Button = styled.button<{width?: number}>`
+const Button = styled.button<{width?: number, big?: boolean}>`
     border: 0;
     background: linear-gradient(270deg, #1570B8 0%, #15B8AD 110.36%);
     color: white;
@@ -38,9 +39,9 @@ const GreyButton = styled.button<{width?: number}>`
     height: 50px;
 `
 
-export const GreenButton: React.FC<ButtonProps> = ({func, children, inActive, width}) => {
+export const GreenButton: React.FC<ButtonProps> = ({func, children, inActive, width, big}) => {
     if(inActive) return <GreyButton width={width} onClick={func}>{children}</GreyButton>
-    return <Button width={width} onClick={func}>{children}</Button>
+    return <Button big={big? true : false} width={width} onClick={func}>{children}</Button>
 }
 
 export default GreenButton
