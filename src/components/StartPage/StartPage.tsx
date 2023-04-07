@@ -77,7 +77,7 @@ const ButtonWrapper = styled.div`
     position: absolute;
     right: 3%;
     button {
-        width: 220px !important;
+        width: ${window.innerWidth < 1024? 170 : 250}px !important;
     }
 `
 
@@ -103,7 +103,7 @@ export const StartPage = () => {
                         <p>Проходи мини-тест — узнай, какие объекты созданы специально для тебя! А после тебя ждёт полное погружение в завораживающие процессы на этих точках месторождений.</p>
                     </div>
                     <ButtonWrapper onClick={() => {ym(93030012,'reachGoal','start')}}>
-                        <GreenButton width={210} func={buttonHandler}>Полный вперёд</GreenButton>
+                        <GreenButton width={window.innerWidth < 1024? 170 : 250} func={buttonHandler}>Полный вперёд</GreenButton>
                     </ButtonWrapper>
                 </Footer>
             </StyledStartPage>
