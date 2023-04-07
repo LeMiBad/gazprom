@@ -163,7 +163,7 @@ const FinalPage = () => {
                         <Char chars={['И','Н','Н','О','В','А','Ц','И','И']}></Char>
                         <h1 style={{color: 'white', fontSize: 16, fontWeight: 500}}>Квест пройден — теперь можешь оставить свой номер ниже и участвовать в розыгрыше приза:</h1>
                         <InpiutWrapper>
-                            <Input placeholder="+7(ХХХ)XХ–ХХ" value={phone} onChange={(e) => handleChange(e)} type={'tel'}></Input>
+                            <Input placeholder="+7(ХХХ)XХ–ХХ" value={phone} onChange={(e) => handleChange(e)}></Input>
                             <CheckWrapper>
                                 <CheckInp onClick={pickHandler}>
                                     {isPicked && <Check/>}
