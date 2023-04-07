@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 import Char from "../UI/Char/Char"
@@ -139,6 +140,14 @@ const FinalPage = () => {
         }
     }
 
+
+    const phoneSend = () => {
+        ym(93030012,'reachGoal','phone')
+        axios.get(`https://gaz.vercel.app/phone?number=${phone}`)
+    }
+    
+
+
     return (
         <GradientBackground gradient="linear-gradient(90deg, #00c3ff 0%, #096d94 46%, rgba(0,31,49,1) 91%)">
             <img style={{position: 'absolute', width: '100%', bottom: 0, height: '100%', zIndex: 0}} alt="fwe" src={back}></img>
@@ -162,13 +171,13 @@ const FinalPage = () => {
                                 <p>Я согласен на обработку <a target={"_blank"} href="https://fut.ru/personal_data_policy/" style={{color: "white", textDecoration: 'underline'}}>персональных данных</a> и получение информационных сообщений</p>
                             </CheckWrapper>
                             <ButtonWrapper>
-                                {isCan? <GreenButton func={() => {ym(93030012,'reachGoal','phone')}}>Отправить</GreenButton> : <GreenButton inActive func={() => {}}>Отправить</GreenButton>}
+                                {isCan? <a style={{color: 'white', textDecoration: "none"}} href="https://t.me/GSP_vacancies"><GreenButton func={phoneSend}>Отправить</GreenButton></a> : <GreenButton inActive func={() => {}}>Отправить</GreenButton>}
                             </ButtonWrapper>
                         </InpiutWrapper>
                     </Side>
                     <Side>
                         <h1 style={{color: 'white', fontSize: 16, fontWeight: 600}}>Мы внедряем современные и технологичные инструменты во все сферы работы. Что если именно ты станешь участником нового инновационного проекта?</h1>
-                        <GreenButton width={70} func={() => {ym(93030012,'reachGoal','final-link')}}>К вакансиям</GreenButton>
+                        <a style={{color: 'white', textDecoration: "none"}} href="https://t.me/GSP_vacancies"><GreenButton width={70} func={() => {ym(93030012,'reachGoal','final-link')}}>К вакансиям</GreenButton></a>
                     </Side>
                 </Main>
             </StyledStartPage>

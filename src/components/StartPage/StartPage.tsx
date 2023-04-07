@@ -75,7 +75,7 @@ const Footer = styled.div`
 
 const ButtonWrapper = styled.div`
     button {
-        width: 160px;
+        width: 210px;
     }
 `
 
@@ -101,7 +101,7 @@ export const StartPage = () => {
                         <p>Проходи мини-тест — узнай, какие объекты созданы специально для тебя! А после тебя ждёт полное погружение в завораживающие процессы на этих точках месторождений.</p>
                     </div>
                     <ButtonWrapper onClick={() => {ym(93030012,'reachGoal','start')}}>
-                        <GreenButton func={buttonHandler}>Полный вперёд</GreenButton>
+                        <GreenButton width={210} func={buttonHandler}>Полный вперёд</GreenButton>
                     </ButtonWrapper>
                 </Footer>
             </StyledStartPage>

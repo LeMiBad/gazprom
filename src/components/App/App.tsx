@@ -17,6 +17,7 @@ import { $charModal } from "../../store/CharModal"
 import AvtoPage from "../AvtoPage/AvtoPage"
 import FinalPage from "../FinalPage/FinalPage"
 import NextPage from "../NextPage/NextPage"
+import axios from "axios"
 
 
 const GlobalStyles = createGlobalStyle`
