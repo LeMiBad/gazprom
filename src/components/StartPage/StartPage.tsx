@@ -74,6 +74,8 @@ const Footer = styled.div`
 
 
 const ButtonWrapper = styled.div`
+    position: absolute;
+    right: 3%;
     button {
         width: 220px !important;
     }
