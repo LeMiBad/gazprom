@@ -177,7 +177,7 @@ const FinalPage = () => {
                     </Side>
                     <Side>
                         <h1 style={{color: 'white', fontSize: 16, fontWeight: 600}}>Мы внедряем современные и технологичные инструменты во все сферы работы. Что если именно ты станешь участником нового инновационного проекта?</h1>
-                        <a style={{color: 'white', textDecoration: "none"}} href="https://t.me/GSP_vacancies"><GreenButton width={70} func={() => {ym(93030012,'reachGoal','final-link')}}>К вакансиям</GreenButton></a>
+                        <a target={"_blank"} style={{color: 'white', textDecoration: "none"}} href="https://t.me/GSP_vacancies"><GreenButton width={70} func={() => {ym(93030012,'reachGoal','final-link')}}>К вакансиям</GreenButton></a>
                     </Side>
                 </Main>
             </StyledStartPage>
