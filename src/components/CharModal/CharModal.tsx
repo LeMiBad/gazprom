@@ -117,11 +117,11 @@ const CharModal: FC<IObjectModal> = ({close, data}) => {
 
         if(c === 1) ym(93030012,'reachGoal','1st-letter')
         if(c === 2) ym(93030012,'reachGoal','2nd-letter')
-        if(c === 3) ym(93030012,'reachGoal','3st-letter')
-        if(c === 4) ym(93030012,'reachGoal','4st-letter')
-        if(c === 5) ym(93030012,'reachGoal','5st-letter')
-        if(c === 6) ym(93030012,'reachGoal','6st-letter')
-        if(c === 7) ym(93030012,'reachGoal','7st-letter')
+        if(c === 3) ym(93030012,'reachGoal','3rd-letter')
+        if(c === 4) ym(93030012,'reachGoal','4th-letter')
+        if(c === 5) ym(93030012,'reachGoal','5th-letter')
+        if(c === 6) ym(93030012,'reachGoal','6th-letter')
+        if(c === 7) ym(93030012,'reachGoal','7th-letter')
 
     }
 

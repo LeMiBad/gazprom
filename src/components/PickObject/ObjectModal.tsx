@@ -28,8 +28,8 @@ const ModalWrapper = styled.div`
 
 const Modal = styled.div`
     position: relative;
-    width: 70%;
-    height: 75%;
+    width: 50%;
+    height: auto;
     background: linear-gradient(90deg, #BEE4FA 32.87%, rgba(190, 228, 250, 0) 60.25%);
 `
 
@@ -44,14 +44,14 @@ const ModalName = styled.h1`
     position: absolute;
     left: 3%;
     top: 3%;
-    font-size: 16px;
+    font-size: 12px;
     color: #1570B8;
 `
 const ModalDesk = styled.h1`
     position: absolute;
     left: 3%;
     bottom: 3%;
-    font-size: 14px;
+    font-size: 10px;
     color: #1570B8;
     width: 40%;
 `

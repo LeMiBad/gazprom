@@ -159,9 +159,9 @@ const FinalPage = () => {
                 </Name>
                 <Main>
                     <Side>
-                        <h1 style={{color: 'white', fontSize: 14}}>Ура-ура, все локации пройдены и буквы собраны!</h1>
+                        <h1 style={{color: 'white', fontSize: 12}}>Ура-ура, все локации пройдены и буквы собраны!</h1>
                         <Char chars={['И','Н','Н','О','В','А','Ц','И','И']}></Char>
-                        <h1 style={{color: 'white', fontSize: 16, fontWeight: 500}}>Квест пройден — теперь можешь оставить свой номер ниже и участвовать в розыгрыше приза:</h1>
+                        <h1 style={{color: 'white', fontSize: 14, fontWeight: 500}}>Квест пройден — теперь можешь оставить свой номер ниже и участвовать в розыгрыше приза:</h1>
                         <InpiutWrapper>
                             <Input placeholder="+7(ХХХ)XХ–ХХ" value={phone} onChange={(e) => handleChange(e)}></Input>
                             <CheckWrapper>

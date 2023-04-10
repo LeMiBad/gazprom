@@ -35,8 +35,9 @@ const ObjectCard = styled.div`
 
     h1 {
         @media (max-width: 768px) {
-            font-size: 20px;
+            font-size: 18px;
         }
+        font-size: 22px;
         display: flex;
         justify-content: center;
         align-items: center;
