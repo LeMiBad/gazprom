@@ -102,6 +102,9 @@ const AskPage = () => {
     const pickHandler = (index: number) => {
         setPickAnswer(index)
 
+        if(cur === 2) {
+            ym(93030012,'reachGoal','test')
+        }
         
         setTimeout(() => {
             setAnswers(() => {
@@ -123,7 +126,6 @@ const AskPage = () => {
             }
         }, 300)
         
-        ym(93030012,'reachGoal','test')
     }
     
     return (
