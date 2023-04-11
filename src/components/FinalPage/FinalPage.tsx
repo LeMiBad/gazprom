@@ -172,7 +172,7 @@ const FinalPage = () => {
                                 <p>Я согласен на обработку <a target={"_blank"} href="https://fut.ru/personal_data_policy/" style={{color: "white", textDecoration: 'underline'}}>персональных данных</a> и получение информационных сообщений</p>
                             </CheckWrapper>
                             <ButtonWrapper>
-                                {isCan? <a style={{color: 'white', textDecoration: "none"}} href="https://t.me/GSP_vacancies"><GreenButton func={phoneSend}>Отправить</GreenButton></a> : <GreenButton inActive func={() => {}}>Отправить</GreenButton>}
+                                {isCan? <a style={{color: 'white', textDecoration: "none"}} href="https://vk.com/gsp_start"><GreenButton func={phoneSend}>Отправить</GreenButton></a> : <GreenButton inActive func={() => {}}>Отправить</GreenButton>}
                             </ButtonWrapper>
                         </InpiutWrapper>
                     </Side>
