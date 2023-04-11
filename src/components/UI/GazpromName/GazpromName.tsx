@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import LOGOTIP from "./LOGOTIP"
 
 
 interface GazpromNameProps {
@@ -21,7 +22,7 @@ const StyledGazpromName = styled.h1`
     background-color: #bee4fa4d;
     backdrop-filter: blur(3px);
     box-sizing: border-box;
-    padding: 0 10px 0 40px;
+    padding: 0 10px 0 60px;
     height: 43px;
     @media (max-width: 768px) {
         font-size: 17px;
@@ -49,7 +50,7 @@ const TextTwo = styled.p`
 const GazpromName: React.FC<GazpromNameProps> = ({textOne, textTwo}) => {
     return (
         <Wrapper>
-            <StyledGazpromName>ГАЗСТРОЙПРОМ</StyledGazpromName>
+            <StyledGazpromName><LOGOTIP/></StyledGazpromName>
             {
                 textOne && textTwo? 
                 <div style={{display: 'flex', flexDirection: 'column', gap: 10}}>

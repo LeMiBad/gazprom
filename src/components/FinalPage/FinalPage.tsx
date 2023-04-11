@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 import Char from "../UI/Char/Char"
+import LOGOTIP from "../UI/GazpromName/LOGOTIP"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import GreenButton from "../UI/GreenButton/GreenButton"
 import back from "./back.png"
@@ -154,7 +155,7 @@ const FinalPage = () => {
             <StyledStartPage>
                 <Name>
                     <div></div>
-                    <h1>ГАЗСТРОЙПРОМ</h1>
+                    <LOGOTIP pad={1.5}/>
                     <div></div>
                 </Name>
                 <Main>
@@ -177,7 +178,7 @@ const FinalPage = () => {
                     </Side>
                     <Side>
                         <h1 style={{color: 'white', fontSize: 16, fontWeight: 600}}>Мы внедряем современные и технологичные инструменты во все сферы работы. Что если именно ты станешь участником нового инновационного проекта?</h1>
-                        <a target={"_blank"} style={{color: 'white', textDecoration: "none"}} href="https://t.me/GSP_vacancies"><GreenButton width={70} func={() => {ym(93030012,'reachGoal','final-link')}}>К вакансиям</GreenButton></a>
+                        <a target={"_blank"} style={{color: 'white', textDecoration: "none"}} href="https://vk.com/gsp_start"><GreenButton width={70} func={() => {ym(93030012,'reachGoal','final-link')}}>К вакансиям</GreenButton></a>
                     </Side>
                 </Main>
             </StyledStartPage>

@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { setCurPage } from "../../store/page"
+import LOGOTIP from "../UI/GazpromName/LOGOTIP"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import GreenButton from "../UI/GreenButton/GreenButton"
 import back from './../../img/union.png'
@@ -11,7 +12,7 @@ const StyledStartPage = styled.div`
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     background: linear-gradient(90deg, #00c3ff 0%, rgba(9, 109, 148, 0.6) 46%, rgba(0,31,49,0) 91%);
 `
 
@@ -22,6 +23,8 @@ const Name = styled.div`
     justify-content: space-between;
     color: white;
     width: 100%;
+    position: absolute;
+    top: 10%;
     height: 5vh;
     box-sizing: border-box;
     div {
@@ -45,10 +48,10 @@ const MainText = styled.p`
     box-sizing: border-box;
     color: white;
     font-size: 16px;
+    font-weight: 800 !important;
     @media (max-height: 320px) {
         font-size: 12px !important;
     }
-    font-weight: 700;
     /* padding: 0 calc(5% + 15px); */
     width: 55%;
 `
@@ -76,6 +79,7 @@ const Footer = styled.div`
 const ButtonWrapper = styled.div`
     position: absolute;
     right: 3%;
+    bottom: 10%;
     button {
         width: ${window.innerWidth < 1024? 200 : 250}px !important;
     }
@@ -93,12 +97,12 @@ export const StartPage = () => {
             <StyledStartPage>
                 <Name>
                     <div></div>
-                    <h1>ГАЗСТРОЙПРОМ</h1>
+                    <LOGOTIP pad={1.5}/>
                     <div></div>
                 </Name>
                 
                 <Footer>
-                    <div style={{display: 'flex', flexDirection: 'column', gap: 15, justifyContent: 'flex-start'}}>
+                    <div style={{display: 'flex', flexDirection: 'column', gap: 15, justifyContent: 'center'}}>
                         <MainText>Газстройпром богат на точки с месторождениями газа и нефти. Речь здесь не только о важных для страны объектах, но и о живописных ландшафтах и перспективных местах для работы.</MainText>
                         <p>Проходи мини-тест — узнай, какие объекты созданы специально для тебя! А после тебя ждёт полное погружение в завораживающие процессы на этих точках месторождений.</p>
                     </div>

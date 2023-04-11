@@ -14,7 +14,8 @@ const Button = styled.button<{width?: number, big?: boolean}>`
     background: linear-gradient(270deg, #1570B8 0%, #15B8AD 110.36%);
     color: white;
     ${props => props.width? `width: ${props.width}%;` : ''}
-    font-weight: 600;
+    font-weight: 500;
+    font-family: "Roboto Condensed";
     box-sizing: border-box;
     padding: 1vh 4vw;
     cursor: pointer;
@@ -32,7 +33,8 @@ const GreyButton = styled.button<{width?: number}>`
     background: #BEE4FA4D;
     backdrop-filter: blur(5px);
     color: white;
-    font-weight: 600;
+    font-weight: 500;
+    font-family: "Roboto Condensed";
     box-sizing: border-box;
     padding: 1vh 3vw;
     cursor: pointer;

@@ -31,11 +31,11 @@ const WrapperForText = styled.div`
     font-size: 16px;
     color: white;
     font-weight: 600;
+    justify-content: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: 10%;
+    gap: 15px;
 `
 
 
@@ -76,8 +76,8 @@ const WrapperForObject: FC<IWrapperForObject> = ({textOne, textTwo}) => {
     return (
         <StyledWrapperForObject>
             <WrapperForText>
-                <p>{textOne}</p>
                 <p>{textTwo}</p>
+                <p>{textOne}</p>
             </WrapperForText>
             <GreenButton func={buttonHandler}>{wordForButton}</GreenButton>
         </StyledWrapperForObject>

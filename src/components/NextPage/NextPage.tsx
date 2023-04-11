@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { setCurPage } from "../../store/page"
+import LOGOTIP from "../UI/GazpromName/LOGOTIP"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import GreenButton from "../UI/GreenButton/GreenButton"
 import back from './back.png'
@@ -82,7 +83,7 @@ export const NextPage = () => {
             <StyledStartPage>
                 <Name>
                     <div></div>
-                    <h1>ГАЗСТРОЙПРОМ</h1>
+                    <LOGOTIP pad={1.5}/>
                     <div></div>
                 </Name>
 
@@ -93,7 +94,7 @@ export const NextPage = () => {
                 </div>
                 
                 <Footer>
-                    <a target={"_blank"} style={{color: 'white', textDecoration: "none"}} href="https://t.me/GSP_vacancies"><GreenButton func={() => {ym(93030012,'reachGoal','mid-link')}}>К вакансиям</GreenButton></a>
+                    <a target={"_blank"} style={{color: 'white', textDecoration: "none"}} href="https://vk.com/gsp_start"><GreenButton func={() => {ym(93030012,'reachGoal','mid-link')}}>К вакансиям</GreenButton></a>
                     <GreenButton func={() => setCurPage(3)}>Продолжить игру</GreenButton>
                 </Footer>
             </StyledStartPage>

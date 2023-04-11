@@ -54,12 +54,20 @@ const Answer = styled.p<{picked: boolean}>`
     ${props => props.picked? 'background: linear-gradient(90deg, #1570B8 0%, rgba(21, 184, 173, 0.31) 100%);' : ''}
 `
 
+const AskTextWrapper = styled.div`
+    position: absolute;
+    height: 100vh;
+    left: 5%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
 const AskText = styled.p`
     font-weight: 700;
-    position: absolute; 
     left: 8%; 
-    top: 30vh;
-    width: 37%; 
+    width: 100%; 
     color: white; 
     font-size: 18px;
     @media (max-height: 320px) {
@@ -69,17 +77,17 @@ const AskText = styled.p`
 
 const current = [
     {
-        ask: 'Перед тобой выбор: уехать на пару дней в новые края. Что ты предпочтешь?',
+        ask: <AskText>Перед тобой выбор: уехать на пару дней в новые края. <br/>Что ты предпочтешь?</AskText>,
         answers: ['пожалуй, выберу что-то ближе к Востоку', 'люблю морозы: Северное сияние и прочие чудеса можно увидеть!', 'мне главное, чтобы рядом была водная гладь'],
         img: window.innerWidth < 1024? zeter : zeterHigh
     },
     {
-        ask: 'Кто любит мегаполис, а кто — уютные маленькие города. В каждом городе свой ритм жизни, как и на каждом предприятии свой ритм работы. Какие масштабы тебе по душе?',
+        ask: <AskText>Кто любит мегаполис, а кто — уютные маленькие города. В каждом городе свой ритм жизни, как и на каждом предприятии свой ритм работы. <br/>Какие масштабы тебе по душе?</AskText>,
         answers: ['лучше что-то более скромное, но уютное и не менее перспективное', 'я за большие масштабы, но в меру', 'вижу себя исключительно на самых прославленных в СМИ предприятиях'],
         img: window.innerWidth < 1024?  shest : shestHigh
     },
     {
-        ask: 'Тебе выпала возможность быть поставщиком ценного и популярного товара. Какую тактику ты выберешь?',
+        ask: <AskText>Тебе выпала возможность быть поставщиком ценного и популярного товара. <br/>Какую тактику ты выберешь?</AskText>,
         answers: ['буду поставлять только по внутренним каналам, никакого экспорта за границу!', 'выберу тактику «и нашим, и вашим» и буду поставлять как внутри страны, так и зарубеж'],
         img: window.innerWidth < 1024? polukrug : polukrugHigh
     },
@@ -129,7 +137,9 @@ const AskPage = () => {
                         return <Answer picked={i === pickAnswer? true : false} key={i} onClick={() => pickHandler(i)}>{answer}</Answer>
                     })}
                 </RightSide>
-                <AskText>{current[cur].ask}</AskText>
+                <AskTextWrapper>
+                    <AskText>{current[cur].ask}</AskText>
+                </AskTextWrapper>
                 <img style={{position: 'absolute', left: 0, bottom: 0, width: '45%', zIndex: -1}} alt="" src={current[cur].img} />
             </Wrapper>
         </GradientBackground>

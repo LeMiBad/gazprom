@@ -30,7 +30,7 @@ const Modal = styled.div`
     position: relative;
     width: 50%;
     height: auto;
-    background: linear-gradient(90deg, #BEE4FA 32.87%, rgba(190, 228, 250, 0) 60.25%);
+    /* background: linear-gradient(90deg, #BEE4FA 32.87%, rgba(190, 228, 250, 0) 60.25%); */
 `
 
 const ModalImg = styled.img`
@@ -44,15 +44,23 @@ const ModalName = styled.h1`
     position: absolute;
     left: 3%;
     top: 3%;
-    font-size: 12px;
+    font-size: 14px;
     color: #1570B8;
+    @media (max-width: 700px) {
+        font-size: 12px;
+    }
 `
 const ModalDesk = styled.h1`
     position: absolute;
     left: 3%;
     bottom: 3%;
-    font-size: 10px;
-    color: #1570B8;
+    font-size: 12px;
+    padding-bottom: 2%;
+    @media (max-width: 700px) {
+        font-size: 10px;
+    }
+    color: black;
+    font-weight: 500;
     width: 40%;
 `
 
