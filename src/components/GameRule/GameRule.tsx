@@ -44,7 +44,7 @@ const Modal = styled.div`
     position: relative;
     width: 55%;
     height: auto;
-    background: linear-gradient(357.3deg, #1570B8 15.18%, rgba(255, 255, 255, 0) 60%);
+    /* background: linear-gradient(357.3deg, #1570B8 15.18%, rgba(255, 255, 255, 0) 60%); */
 `
 
 const ModalImg = styled.img`
@@ -97,7 +97,7 @@ const GameRule = () => {
                     <Modal>
                         <ModalImg alt='dw' src={pickedObject.askPage.img}></ModalImg>
                         <ModalName></ModalName>
-                        <ModalDesk>{pickedObject.askPage.text}</ModalDesk>
+                        {/* <ModalDesk>{pickedObject.askPage.text}</ModalDesk> */}
                         <ButtonWrapper>
                             <GreenButton func={openHandler}>Понятно</GreenButton>
                         </ButtonWrapper>

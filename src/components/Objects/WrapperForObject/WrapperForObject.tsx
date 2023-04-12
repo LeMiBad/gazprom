@@ -26,7 +26,7 @@ const StyledWrapperForObject = styled.div`
 `
 
 const WrapperForText = styled.div`
-    width: 75%;
+    width: 55%;
     height: 90%;
     font-size: 16px;
     color: white;

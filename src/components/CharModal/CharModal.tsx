@@ -37,8 +37,8 @@ const ModalWrapper = styled.div`
 
 const Modal = styled.div`
     position: relative;
-    width: 55%;
-    height: 60%;
+    width: 50%;
+    height: auto;
     /* background: linear-gradient(90deg, #BEE4FA 32.87%, rgba(190, 228, 250, 0) 60.25%); */
     filter: drop-shadow(0px 4px 20px rgba(21, 184, 173, 0.8));
     background: rgba(21, 184, 173, 0.8);

@@ -12,7 +12,7 @@ const StyledStartPage = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background: linear-gradient(90deg, #00c3ff 0%, rgba(9, 109, 148, 0.6) 46%, rgba(0,31,49,0) 91%);
+    background: linear-gradient(90deg, #00c3ff 15%, rgba(9, 109, 148, 0.6) 46%, rgba(0,31,49,0) 91%);
 `
 
 const Name = styled.div`
@@ -78,8 +78,8 @@ const Footer = styled.div`
 
 export const NextPage = () => {
     return (
-        <GradientBackground gradient="linear-gradient(90.45deg, #1570B8 23.72%, #080f1e 100%)">
-            <img style={{position: 'absolute', width: '100%', bottom: 0, height: '90%', zIndex: 0}} alt="fwe" src={back}></img>
+        <GradientBackground gradient="linear-gradient(90.45deg, #1570B8 0%, #0E4977 47.11%, #071D2F 100%)">
+            <img style={{position: 'absolute', width: '100%', bottom: 0, height: '90%', zIndex: -1}} alt="fwe" src={back}></img>
             <StyledStartPage>
                 <Name>
                     <div></div>

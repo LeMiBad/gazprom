@@ -45,10 +45,10 @@ import backObjFigureZHigh from './../components/Objects/ObjectPage/img/backObjFi
 import backObjFigureKHigh from './../components/Objects/ObjectPage/img/backObjFigureKHigh.png'
 
 
-import askH from './../components/GameRule/askH.png'
-import askU from './../components/GameRule/askU.png'
-import askO from './../components/GameRule/askO.png'
-import askCH from './../components/GameRule/askCH.png'
+import askH from './../components/GameRule/askH.jpg'
+import askU from './../components/GameRule/askU.jpg'
+import askO from './../components/GameRule/askO.jpg'
+import askCH from './../components/GameRule/askCH.jpg'
 
 
 
