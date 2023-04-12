@@ -5,7 +5,7 @@ import Char from "../UI/Char/Char"
 import LOGOTIP from "../UI/GazpromName/LOGOTIP"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import GreenButton from "../UI/GreenButton/GreenButton"
-import back from "./back.png"
+import back from "./back.jpg"
 import Check from "./check"
 
 const StyledStartPage = styled.div`

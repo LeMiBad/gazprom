@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
-import { setCharModal } from "../../store/CharModal"
-import { setCurPage } from "../../store/page"
 import GameRule from "../GameRule/GameRule"
 import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import GreenButton from "../UI/GreenButton/GreenButton"
-import back from './back.png'
-import modal1 from './modal1.png'
-import modal2 from './modal2.png'
-import modal3 from './modal3.png'
+import back from './back.jpg'
+import modal1 from './modal1.jpg'
+import modal2 from './modal2.jpg'
+import modal3 from './modal3.jpg'
 import PolzunokModal from "./PolzunokModal"
 
 function formatNumber(numberString: string): string {

@@ -2,8 +2,8 @@ import { useState } from "react"
 import styled from "styled-components"
 import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
-import ask from './ask.png'
-import askHigh from './askHigh.png'
+import ask from './ask.jpg'
+import askHigh from './askHigh.jpg'
 import zeter from './../../img/zeter.png'
 import shest from './../../img/shest.png'
 import polukrug from './../../img/polukrug.png'
@@ -142,7 +142,7 @@ const AskPage = () => {
                 <AskTextWrapper>
                     <AskText>{current[cur].ask}</AskText>
                 </AskTextWrapper>
-                <img style={{position: 'absolute', left: 0, bottom: 0, width: '45%', zIndex: -1}} alt="" src={current[cur].img} />
+                <img style={{position: 'absolute', left: 0, bottom: 0, height: '70%', width: 'auto', zIndex: -1}} alt="" src={current[cur].img} />
             </Wrapper>
         </GradientBackground>
     )

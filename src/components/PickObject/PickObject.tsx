@@ -1,11 +1,11 @@
 import { useStore } from "effector-react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import styled from "styled-components"
 import { $askAnswers, pickObject } from "../../store/askAnswers"
 import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
-import background from './img/background.png'
-import backgroundHigh from './img/backgroundHigh.png'
+import background from './img/background.jpg'
+import backgroundHigh from './img/backgroundHigh.jpg'
 import ObjectModal from "./ObjectModal"
 
 

@@ -5,9 +5,7 @@ import GameRule from "../GameRule/GameRule"
 import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import GreenButton from "../UI/GreenButton/GreenButton"
-import full from './full.png'
-import backHigh from './backHigh.png'
-import back from './back.png'
+import back from './backHigh.jpg'
 import sqr1 from './sqr1.png'
 import sqr2 from './sqr2.png'
 import sqr3 from './sqr3.png'

@@ -5,8 +5,8 @@ import GameRule from "../GameRule/GameRule"
 import GazpromName from "../UI/GazpromName/GazpromName"
 import GradientBackground from "../UI/GradientBackground/GradientBackground"
 import GreenButton from "../UI/GreenButton/GreenButton"
-import back from './back.png'
-import backHigh from './backHigh.png'
+import back from './back.jpg'
+import backHigh from './backHigh.jpg'
 import {areaCell} from './area'
 import BigAvto from "./BigAvto"
 import MiddleAvto from "./MiddleAvto"
