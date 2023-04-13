@@ -4,6 +4,7 @@ import background from './backgound.jpg'
 import Mobile from "./Mobile"
 import z from "./z.png"
 import c from "./c.png"
+import LOGOTIP from "../UI/GazpromName/LOGOTIP"
 
 
 const Name = styled.div`
@@ -56,7 +57,7 @@ const BadResolutionPage = () => {
             </Wrapper>
             <Name>
                 <div></div>
-                <h1>ГАЗСТРОЙПРОМ</h1>
+                <LOGOTIP pad={1.5} />
                 <div></div>
             </Name>
         </GradientBackground>

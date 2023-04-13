@@ -61,9 +61,8 @@ export const App = () => {
         <>
             <GlobalStyles/>
             {charModal? <CharModal/> : null}
-            {isVertical? <BadResolutionPage></BadResolutionPage> 
-            : 
-            Pages[curPage]}
+            {isVertical && <BadResolutionPage></BadResolutionPage>}
+            {Pages[curPage]}
         </>
     )
 }
